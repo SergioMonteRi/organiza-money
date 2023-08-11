@@ -1,0 +1,10 @@
+.about-container {
+  height: 600px;
+  background: linear-gradient(
+    180deg,
+    #030d1e 0.01%,
+    #030d1e 7.12%,
+    #0b1a41 46.88%,
+    #0c349a 100%
+  );
+}
