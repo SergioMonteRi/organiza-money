@@ -1,43 +1,25 @@
-import Typed from "react-typed";
-
-import Navbar from "components/navbar";
-
-import HomeImgDesktop from "../../assets/images/home_image.svg";
-import HomeImgMobile from "../../assets/images/home_image_mobile.png";
-
-import "./styles.css";
+import { ReactComponent as HomeAstronaut } from 'assets/images/home_astronaut.svg';
+import './styles.css';
 
 const Home = () => {
   return (
     <div className="home-container">
-      <Navbar />
-      <main className="home-content-container">
-        <div className="home-text-container">
-          <h1 className="home-text-data">
-            Seu controle financeiro em suas mãos:
-          </h1>
+      <div className="home-content-container">
+        <h1 className="home-first-text">
+          Seu salário vai para o espaço? Saiba que organização financeira não é
+          coisa de outro mundo.
+        </h1>
 
-          <div className="home-text-data">
-            <Typed
-              strings={["Gerencie!", "Poupe!", "Realize!"]}
-              typeSpeed={100}
-              backSpeed={60}
-              loop
-            />
-          </div>
+        <p className="home-second-text">
+          Visualize seus gastos de maneira organizada com nossos gráficos
+          analíticos fáceis de interpretar.
+        </p>
 
-          <h2>
-            Domine seus gastos com nosso aplicativo intuitivo de controle
-            financeiro. Visualize, planeje, poupe.
-          </h2>
-        </div>
-
-        <picture className="home-img-container">
-          <source media="(max-width: 767px)" srcSet={HomeImgMobile} />
-          <source media="(min-width: 768px)" srcSet={HomeImgDesktop} />
-          <img src={HomeImgMobile} alt="Imagem Responsiva" />
-        </picture>
-      </main>
+        <button className="home-btn-acess">Acessar aplicativo</button>
+      </div>
+      <div className="home-img-container">
+        <HomeAstronaut />
+      </div>
     </div>
   );
 };

@@ -1,17 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
-import { CgEnter } from "react-icons/cg";
+import { Link, NavLink } from 'react-router-dom';
+import { CgEnter } from 'react-icons/cg';
 
-import { ReactComponent as Logo } from "assets/icons/logo.svg";
+import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg';
 
-import "bootstrap/js/src/collapse.js";
-import "./styles.css";
+import 'bootstrap/js/src/collapse.js';
+import './styles.css';
 
-const Navbar = () => {
+const NavigationBar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
-      <div className="container-fluid">
-        <Link to="/" className="nav-logo-container">
-          <Logo className="nav-logo-icon" />
+      <div className="container-fluid nav-data-container">
+        <Link to="/">
           <h4 className="nav-logo-text">Organiza Money</h4>
         </Link>
 
@@ -24,7 +23,7 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <MenuIcon />
         </button>
 
         <div className="collapse navbar-collapse" id="easybill-navbar">
@@ -32,17 +31,11 @@ const Navbar = () => {
             <li>
               <NavLink to="/">Sobre</NavLink>
             </li>
-            <li>
-              <NavLink to="/">Recursos</NavLink>
-            </li>
-            <li className="nav-logout">
-              <NavLink to="/">Sair</NavLink>
-            </li>
           </ul>
         </div>
 
         <div className="nav-login-logout">
-          <a href="#logout">Entar</a>
+          <a href="#logout">Log in</a>
           <CgEnter />
         </div>
       </div>
@@ -50,4 +43,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;
