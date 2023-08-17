@@ -8,23 +8,34 @@
   align-items: center;
 }
 
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
 .nav-logo-text {
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .main-menu {
   display: flex;
   font-size: 18px;
-  width: 380px;
   justify-content: space-between;
 }
 .main-menu a {
-  font-style: normal;
   color: rgba(255, 255, 255, 0.5);
+  transition: color 0.5s ease;
 }
 
 .main-menu a:hover {
-  color: #fff;
+  color: aqua;
 }
 
 .navbar-toggler {
@@ -33,8 +44,6 @@
 }
 
 .navbar-toggler-icon {
-  width: 40px;
-  height: 40px;
   background-image: url('/src/assets/icons/menu.svg');
 }
 
@@ -64,6 +73,20 @@
 
 @media screen and (min-width: 768px) {
   .main-nav {
-    padding: 2rem 4rem !important;
+    padding: 2rem !important;
+  }
+
+  .nav-logo-container {
+    width: 100%;
+  }
+
+  .main-menu {
+    margin: 0 !important;
+  }
+
+  .nav-login-logout {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
   }
 }

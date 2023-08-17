@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { CgEnter } from 'react-icons/cg';
+import { TfiWallet } from 'react-icons/tfi';
 
 import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg';
 
@@ -10,7 +11,8 @@ const NavigationBar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
       <div className="container-fluid nav-data-container">
-        <Link to="/">
+        <Link to="/" className="nav-logo-container">
+          <TfiWallet className="nav-logo-icon" />
           <h4 className="nav-logo-text">Organiza Money</h4>
         </Link>
 
@@ -30,6 +32,9 @@ const NavigationBar = () => {
           <ul className="navbar-nav offset-md-2 main-menu">
             <li>
               <NavLink to="/">Sobre</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Login</NavLink>
             </li>
           </ul>
         </div>

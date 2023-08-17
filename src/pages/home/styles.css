@@ -17,6 +17,9 @@
 }
 
 .home-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0 2rem;
   position: relative;
   text-align: center;
@@ -45,8 +48,11 @@
   letter-spacing: -0.24px;
 }
 
-.home-btn-acess {
-  width: 220px;
+.home-login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
   height: 50px;
   margin-top: 0.5rem;
   border-radius: 40px;
@@ -56,7 +62,7 @@
   font-weight: 700;
 }
 
-.home-btn-acess:hover {
+.home-login-link:hover {
   background-color: #6899f9;
   transition: 1s;
   color: #ffff;
@@ -65,7 +71,7 @@
 .home-img-container {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   height: 40%;
   margin-top: 1rem;
 
@@ -92,10 +98,6 @@
     padding: 0 4rem;
   }
 
-  .home-btn-acess {
-    width: 300px;
-  }
-
   .home-img-container {
     height: 50%;
   }
@@ -115,28 +117,26 @@
     padding-top: 1rem;
   }
 
-  .home-btn-acess {
-    margin-top: 1rem;
-  }
-
   .home-img-container {
     height: 55%;
   }
-}
 
-@media screen and (min-width: 992px) {
-  .home-container {
-    background-position-y: 170%;
-  }
-
-  .home-first-text {
-    padding-top: 1rem;
+  .home-login-link {
+    width: 50%;
   }
 }
 
 @media screen and (min-width: 992px) {
   .home-container {
     background-position-y: 200%;
+  }
+
+  .home-first-text {
+    padding-top: 1rem;
+  }
+
+  .home-login-link {
+    width: 40%;
   }
 }
 
@@ -164,12 +164,11 @@
     font-size: 1.5rem;
   }
 
-  .home-btn-acess {
-    width: 420px;
-    height: 50px;
-  }
-
   .home-img-container {
     height: 120%;
+  }
+
+  .home-login-link {
+    width: 60%;
   }
 }
