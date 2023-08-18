@@ -15,3 +15,9 @@ a {
   margin: 0;
   color: #ffffff;
 }
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

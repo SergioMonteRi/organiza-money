@@ -7,6 +7,9 @@ import NavigationBar from 'components/navigation-bar';
 
 import 'assets/styles/custom.scss';
 import './App.css';
+import './styles/page.css';
+import './styles/keyframes.css';
+import './styles/link.css';
 
 function App() {
   return (

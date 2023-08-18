@@ -1,25 +1,3 @@
-.login-container {
-  padding: 2rem;
-}
-
-.login-header-text {
-  font-weight: 700;
-  font-size: 28px;
-  background: conic-gradient(
-    from 150deg at 20% 80%,
-    #fff 220.62546730041504deg,
-    #94a4ee 293.7517976760864deg,
-    #6899f9 359.9639940261841deg
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.login-header-text:first-child {
-  margin-bottom: 12px;
-}
-
 .login-create-account-container {
   display: flex;
   margin-top: 1rem;
@@ -105,4 +83,41 @@
 .login-form-btn-google-icon {
   height: 30px;
   width: 30px;
+}
+
+.login-img-container {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .login-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 90px);
+    position: relative;
+    overflow: hidden;
+    background-image: url('assets/images/background_home_big.svg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-position-y: 100%;
+    background-size: 100%;
+  }
+
+  .login-img-container svg {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom;
+    animation: zigzag 4s linear infinite;
+  }
+
+  .login-img-animation {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: slideUp 1.5s ease-in-out forwards;
+  }
 }
