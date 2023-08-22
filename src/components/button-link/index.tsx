@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import './styles.css';
-
 type Props = {
   text: string;
   url: string;
@@ -9,7 +7,7 @@ type Props = {
 
 const ButtonLink = ({ text, url }: Props) => {
   return (
-    <Link className="button-link" to={`${url}`}>
+    <Link className="button" to={`${url}`}>
       {text}
     </Link>
   );

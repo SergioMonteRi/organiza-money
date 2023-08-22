@@ -1,19 +1,33 @@
-import { Link, NavLink } from 'react-router-dom';
-import { CgEnter } from 'react-icons/cg';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TfiWallet } from 'react-icons/tfi';
 
 import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg';
 
 import 'bootstrap/js/src/collapse.js';
 import './styles.css';
+import { useContext } from 'react';
+import { AuthContext } from 'contex/AuthContex';
+import { removeAuthData } from 'utils/storage';
 
 const NavigationBar = () => {
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
+  const navigation = useNavigate();
+
+  const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    removeAuthData();
+    setAuthContextData({
+      authenticated: false,
+    });
+    navigation('/');
+  };
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
       <div className="container-fluid nav-data-container">
         <Link to="/" className="nav-logo-container">
-          <TfiWallet className="nav-logo-icon page-link" />
-          <h4 className="nav-logo-text page-link">Organiza Money</h4>
+          <TfiWallet className="nav-logo-icon" />
+          <h4 className="nav-logo-text">Organiza Money</h4>
         </Link>
 
         <button
@@ -35,19 +49,25 @@ const NavigationBar = () => {
                 Sobre
               </NavLink>
             </li>
-            <li className="navbar-login-link">
-              <NavLink to="/login" className="page-link">
-                Login
-              </NavLink>
-            </li>
-          </ul>
-        </div>
 
-        <div className="nav-login-logout">
-          <a href="#logout" className="page-link">
-            Log in
-          </a>
-          <CgEnter className="page-link" />
+            {authContextData.authenticated ? (
+              <li>
+                <a
+                  href="#logout"
+                  className="page-link"
+                  onClick={handleLogoutClick}
+                >
+                  Logout
+                </a>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login" className="page-link">
+                  Login
+                </NavLink>
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     </nav>

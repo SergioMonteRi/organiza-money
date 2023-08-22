@@ -22,26 +22,6 @@
   margin-bottom: 2rem;
 }
 
-.login-form-field-label {
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.login-form-field-input {
-  height: 50px;
-  background-color: #000000;
-  border-radius: 10px;
-  padding: 0 1rem;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-}
-
-.login-form-field-input:focus {
-  border: 1px solid #6899f9;
-  color: #ffffff;
-}
-
 .login-form-field-input:-webkit-autofill,
 .login-form-field-input:-webkit-autofill:hover,
 .login-form-field-input:-webkit-autofill:focus,

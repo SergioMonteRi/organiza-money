@@ -2,8 +2,11 @@ import { ReactComponent as HomeAstronaut } from 'assets/images/home_astronaut.sv
 import './styles.css';
 
 import ButtonLink from 'components/button-link';
+import { useContext } from 'react';
+import { AuthContext } from 'contex/AuthContex';
 
 const Home = () => {
+  const { authContextData } = useContext(AuthContext);
   return (
     <div className="page-container home-container">
       <div className="page-content-container">
@@ -17,7 +20,11 @@ const Home = () => {
           analíticos fáceis de interpretar.
         </p>
 
-        <ButtonLink text="Acessar aplicativo" url="/login" />
+        {authContextData.authenticated ? (
+          <ButtonLink text="Acessar dashboard" url="/dashboard" />
+        ) : (
+          <ButtonLink text="Acessar aplicativo" url="/login" />
+        )}
       </div>
       <div className="home-img-container">
         <div className="home-img-animation ">
