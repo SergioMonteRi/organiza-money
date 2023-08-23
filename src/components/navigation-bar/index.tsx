@@ -5,13 +5,28 @@ import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg';
 
 import 'bootstrap/js/src/collapse.js';
 import './styles.css';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from 'contex/AuthContex';
 import { removeAuthData } from 'utils/storage';
+import { isAuthenticated } from 'utils/auth';
+import { getTokenData } from 'utils/token';
 
 const NavigationBar = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);
   const navigation = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      setAuthContextData({
+        authenticated: true,
+        tokenData: getTokenData(),
+      });
+    } else {
+      setAuthContextData({
+        authenticated: false,
+      });
+    }
+  }, [setAuthContextData]);
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();

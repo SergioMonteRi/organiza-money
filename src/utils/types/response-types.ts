@@ -5,4 +5,16 @@ export type LoginResponse = {
   scope: string;
   userFirstName: string;
   userId: number;
+  googleUser?: boolean;
+};
+
+export type GoogleUserDataResponse = {
+  email: string;
+  email_verified: string;
+  family_name: string;
+  given_name: string;
+  locale: string;
+  name: string;
+  picture: string;
+  sub: string;
 };

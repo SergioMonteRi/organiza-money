@@ -6,9 +6,12 @@ export type TokenData = {
   exp: number;
   user_name: string;
   authorities: Role[];
+  name?: string;
+  picture?: string;
 };
 
 export const getTokenData = (): TokenData | undefined => {
+  console.log('test ', getAuthData().access_token);
   try {
     return jwtDecode(getAuthData().access_token) as TokenData;
   } catch (error) {
