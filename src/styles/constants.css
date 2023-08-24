@@ -1,0 +1,12 @@
+:root {
+  /* colors */
+  --dash-card-background-color: #0e1940;
+  --dash-input-background-color: #08102c;
+  --white: #ffffff;
+  --light-color: #e9e9e9;
+  --light-grey: #949494;
+  --green-color: #08b976;
+
+  /* medias */
+  --media-small: (min-width: 576px);
+}

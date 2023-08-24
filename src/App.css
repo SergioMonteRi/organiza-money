@@ -13,7 +13,7 @@ h4,
 a {
   text-decoration: none;
   margin: 0;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .App {

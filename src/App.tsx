@@ -15,6 +15,8 @@ import './styles/page.css';
 import './styles/keyframes.css';
 import './styles/link.css';
 import './styles/button.css';
+import './styles/dashboard.css';
+import './styles/constants.css';
 
 function App() {
   const [authContextData, setAuthContextData] = useState<AuthContextData>({

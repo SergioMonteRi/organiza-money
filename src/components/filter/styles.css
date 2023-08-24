@@ -1,0 +1,28 @@
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.filter-input {
+  height: 45px;
+  background-color: var(--dash-input-background-color);
+  color: var(--white);
+  border: 1px solid #384459;
+  border-radius: 10px;
+  padding: 0 20px;
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.filter-input::placeholder {
+  color: var(--white);
+}
+
+@media screen and (min-width: 576px) {
+}

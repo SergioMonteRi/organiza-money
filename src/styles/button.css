@@ -14,7 +14,7 @@
 
 .button:hover {
   transition: 0.7s;
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--white);
+  border-color: var(--white);
   background-color: #6899f9;
 }

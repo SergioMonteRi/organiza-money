@@ -1,8 +1,12 @@
+import Filter from 'components/filter';
 import { AuthContext } from 'contex/AuthContex';
 import { useContext, useEffect } from 'react';
 import { requestGoogleUserData } from 'utils/requests/user';
 import { getAuthData } from 'utils/storage';
 import { GoogleUserDataResponse } from 'utils/types/response-types';
+
+import './styles.css';
+import SpendsByDate from 'components/spends-by-date';
 
 const Dashboard = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);
@@ -27,9 +31,13 @@ const Dashboard = () => {
   }, [setAuthContextData]);
 
   return (
-    <div>
-      {authContextData.tokenData?.user_name}
-      <img src={authContextData.tokenData?.picture} alt={''} />
+    <div className="dashobard-container">
+      <div>
+        {authContextData.tokenData?.user_name}
+        <img src={authContextData.tokenData?.picture} alt={''} />
+      </div>
+      <Filter />
+      <SpendsByDate />
     </div>
   );
 };

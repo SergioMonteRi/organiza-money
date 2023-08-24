@@ -52,6 +52,8 @@ const Login = () => {
       .finally(() => {
         setIsLoading(false);
       });
+
+    navigate('/dashboard');
   };
 
   useEffect(() => {
@@ -116,7 +118,7 @@ const Login = () => {
               <div className="login-form-field-container">
                 <input
                   {...register('username', {
-                    required: 'Campo obrigatório',
+                    // required: 'Campo obrigatório',
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: 'Email inválido',
@@ -137,7 +139,7 @@ const Login = () => {
               <div className="login-form-field-container">
                 <input
                   {...register('password', {
-                    required: 'Campo obrigatório',
+                    // required: 'Campo obrigatório',
                   })}
                   type="password"
                   className={`login-form-field-input form-control base-input ${

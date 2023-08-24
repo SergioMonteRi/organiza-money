@@ -27,9 +27,9 @@
 .login-form-field-input:-webkit-autofill:focus,
 .login-form-field-input:-webkit-autofill:active {
   -webkit-background-clip: text;
-  -webkit-text-fill-color: #ffffff;
+  -webkit-text-fill-color: var(--white);
   transition: background-color 5000s ease-in-out 0s;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--white);
 }
 
 .login-form-btn-container {
@@ -46,7 +46,7 @@
   height: 50px;
   border-radius: 10px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .login-form-btn-google-login {
