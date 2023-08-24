@@ -7,6 +7,8 @@ import { GoogleUserDataResponse } from 'utils/types/response-types';
 
 import './styles.css';
 import SpendsByDate from 'components/spends-by-date';
+import SpendSummary from 'components/spend-summary';
+import PieChart from 'components/pie-chart';
 
 const Dashboard = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);
@@ -38,6 +40,14 @@ const Dashboard = () => {
       </div>
       <Filter />
       <SpendsByDate />
+      <div className="spend-overview-container">
+        <SpendSummary />
+        <PieChart
+          name="Gastos"
+          labels={['Mercado', 'Farmácia', 'Escola']}
+          series={[25, 50, 30]}
+        />
+      </div>
     </div>
   );
 };

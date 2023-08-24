@@ -18,7 +18,44 @@ export const chartOptions = {
   chart: {
     foreColor: '#b4bed2',
     height: '100%',
-    with: '100%',
+    width: '100%',
+    fontFamily: 'Lato, sans-serif',
+    offsetX: -10,
+    locales: [
+      {
+        name: 'pt-BR',
+        options: {
+          months: [
+            'Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro',
+          ],
+          shortMonths: [
+            'Jan',
+            'Fev',
+            'Mar',
+            'Abr',
+            'Mai',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Set',
+            'Out',
+            'Nov',
+            'Dez',
+          ],
+          days: [
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+            'Domingo',
+          ],
+          shortDays: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        },
+      },
+    ],
+    defaultLocale: 'pt-BR',
   },
   plotOptions: {
     bar: {

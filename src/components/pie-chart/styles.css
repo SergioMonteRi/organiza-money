@@ -1,0 +1,17 @@
+.pie-chart-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.apexcharts-legend.apexcharts-align-center {
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+}
+
+.apexcharts-legend-series {
+  display: flex;
+  justify-content: left;
+  width: 100px;
+}

@@ -5,6 +5,12 @@
   padding: 0 24px;
 }
 
+.spend-overview-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 @media screen and (min-width: 576px) {
   .dashobard-container {
     padding: 0 32px;

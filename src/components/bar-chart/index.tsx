@@ -4,10 +4,34 @@ import { chartOptions } from './helpers';
 import './styles.css';
 
 const initialData = [
-  { x: '2020-01-05', y: 10 },
-  { x: '2020-02-05', y: 20 },
-  { x: '2020-03-05', y: 30 },
-  { x: '2020-04-05', y: 40 },
+  {
+    x: '2023-01-01',
+    y: 45,
+  },
+  {
+    x: '2023-02-01',
+    y: 39,
+  },
+  {
+    x: '2023-03-01',
+    y: 25,
+  },
+  {
+    x: '2023-04-01',
+    y: 35,
+  },
+  {
+    x: '2023-05-01',
+    y: 20,
+  },
+  {
+    x: '2023-06-01',
+    y: 50,
+  },
+  {
+    x: '2023-07-01',
+    y: 30,
+  },
 ];
 
 const BarChart = () => {
@@ -15,7 +39,7 @@ const BarChart = () => {
     <div className="bar-chart-container">
       <ReactApexChart
         options={chartOptions}
-        series={[{ name: 'Vendas', data: initialData }]}
+        series={[{ name: 'Mercado', data: initialData }]}
         type="bar"
         height="100%"
         width="100%"
