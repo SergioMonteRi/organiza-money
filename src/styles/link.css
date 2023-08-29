@@ -1,9 +1,0 @@
-.page-link {
-  color: var(--white);
-  transition: color 0.5s ease;
-  font-weight: 700;
-}
-
-.page-link:hover {
-  color: #4c84d8;
-}

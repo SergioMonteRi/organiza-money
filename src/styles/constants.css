@@ -6,7 +6,10 @@
   --light-color: #e9e9e9;
   --light-grey: #949494;
   --green-color: #08b976;
-
+  --pink-color: #ffa0dc;
+  --light-green-color: #c6f3e5;
+  --grey-color: #6b6b6b;
+  --yellow-color: #fdffa0;
   /* medias */
   --media-small: (min-width: 576px);
 }

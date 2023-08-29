@@ -79,7 +79,6 @@
     height: calc(100vh - 90px);
     position: relative;
     overflow: hidden;
-    background-image: url('assets/images/background_home_big.svg');
     background-repeat: no-repeat;
     background-position: 50%;
     background-position-y: 100%;

@@ -1,0 +1,42 @@
+.information-section-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  justify-content: space-between;
+}
+
+.information-section-img-container {
+  height: 350px;
+}
+
+.information-section-img {
+  width: 100%;
+  height: 100%;
+}
+
+.information-section-enter-app {
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.information-section-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.information-section-text h1 {
+  display: inline;
+  font-weight: 500;
+  color: var(--grey-color);
+  font-family: 'Nothing You Could Do', sans-serif;
+  font-size: 28px;
+}
+
+.information-section-text p {
+  color: var(--grey-color);
+  font-size: 14px;
+}

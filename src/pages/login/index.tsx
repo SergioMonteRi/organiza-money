@@ -1,7 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-import { ReactComponent as RocketImg } from 'assets/images/rocket.svg';
-
 import './styles.css';
 import { useForm } from 'react-hook-form';
 import { LoginRequest } from 'utils/types/request-types';
@@ -173,9 +171,7 @@ const Login = () => {
             </button>
           </div>
           <div className="login-img-container">
-            <div className="login-img-animation">
-              <RocketImg />
-            </div>
+            <div className="login-img-animation"></div>
           </div>
         </>
       )}

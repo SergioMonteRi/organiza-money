@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { TfiWallet } from 'react-icons/tfi';
 
-import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg';
+import { CgMenuGridO } from 'react-icons/cg';
+import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
 
 import 'bootstrap/js/src/collapse.js';
 import './styles.css';
@@ -41,7 +41,7 @@ const NavigationBar = () => {
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
       <div className="container-fluid nav-data-container">
         <Link to="/" className="nav-logo-container">
-          <TfiWallet className="nav-logo-icon" />
+          <AppIcon className="nav-logo-icon" />
           <h4 className="nav-logo-text">Organiza Money</h4>
         </Link>
 
@@ -54,17 +54,19 @@ const NavigationBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <MenuIcon />
+          <CgMenuGridO className="nav-menu-icon" />
         </button>
 
         <div className="collapse navbar-collapse" id="easybill-navbar">
           <ul className="navbar-nav offset-md-2 main-menu">
             <li>
-              <NavLink to="/" className="page-link">
-                Sobre
-              </NavLink>
+              <NavLink to="/">Sobre</NavLink>
             </li>
 
+            <li>
+              <NavLink to="/">Propósito</NavLink>
+            </li>
+            {/* 
             {authContextData.authenticated ? (
               <li>
                 <a
@@ -81,7 +83,7 @@ const NavigationBar = () => {
                   Login
                 </NavLink>
               </li>
-            )}
+            )} */}
           </ul>
         </div>
       </div>

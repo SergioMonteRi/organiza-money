@@ -1,4 +1,16 @@
 .home-container {
+  height: 100%;
+}
+
+.home-second-section-container {
+  background-color: var(--pink-color);
+}
+
+.home-fourth-section-container {
+  background-color: var(--yellow-color);
+}
+
+/* .home-container {
   flex-direction: column;
   align-items: center;
   background-image: url('assets/images/background_home_mobile.svg');
@@ -68,4 +80,4 @@
     width: 100%;
     height: calc(100vh - 90px);
   }
-}
+} */
