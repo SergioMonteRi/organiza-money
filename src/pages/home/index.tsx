@@ -1,7 +1,7 @@
 import './styles.css';
 
-import { useContext } from 'react';
-import { AuthContext } from 'contex/AuthContex';
+// import { useContext } from 'react';
+// import { AuthContext } from 'contex/AuthContex';
 import FirstSection from './components/first-section';
 import InformativeSection from './components/informative-section';
 

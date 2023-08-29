@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { CgMenuGridO } from 'react-icons/cg';
 import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
@@ -7,13 +7,13 @@ import 'bootstrap/js/src/collapse.js';
 import './styles.css';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from 'contex/AuthContex';
-import { removeAuthData } from 'utils/storage';
+// import { removeAuthData } from 'utils/storage';
 import { isAuthenticated } from 'utils/auth';
 import { getTokenData } from 'utils/token';
 
 const NavigationBar = () => {
-  const { authContextData, setAuthContextData } = useContext(AuthContext);
-  const navigation = useNavigate();
+  const { setAuthContextData } = useContext(AuthContext);
+  // const navigation = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated()) {
@@ -28,14 +28,14 @@ const NavigationBar = () => {
     }
   }, [setAuthContextData]);
 
-  const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    removeAuthData();
-    setAuthContextData({
-      authenticated: false,
-    });
-    navigation('/');
-  };
+  // const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  //   event.preventDefault();
+  //   removeAuthData();
+  //   setAuthContextData({
+  //     authenticated: false,
+  //   });
+  //   navigation('/');
+  // };
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
