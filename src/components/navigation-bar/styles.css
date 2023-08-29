@@ -1,5 +1,4 @@
 .main-nav {
-  min-height: 70px;
   padding-left: 12px !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -11,22 +10,24 @@
 
 .nav-logo-icon {
   font-size: 30px;
-  color: var(--pink-color);
+  color: var(--green-color);
   margin-right: 12px;
 }
 
 .nav-logo-text {
   font-size: 20px;
-  color: var(--pink-color);
+  color: var(--green-color);
 }
 
 .nav-menu-icon {
-  color: var(--pink-color);
+  color: var(--green-color);
   font-size: 30px;
 }
+
 .main-menu {
   padding: 16px 0;
 }
+
 .main-menu a {
-  color: var(--pink-color);
+  color: var(--green-color);
 }
