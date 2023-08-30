@@ -1,11 +1,11 @@
-.home-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 @media screen and (min-width: 992px) {
-  .home-container > div {
-    height: 50%;
+  .home-grid-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px);
+  }
+
+  .home-last-section-container {
+    height: calc(50vh - 70px);
   }
 }

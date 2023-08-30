@@ -1,8 +1,8 @@
 // COMPONENTS
-import MainSection from './components/main-section';
 import InformativeSection from './components/informative-section';
 
 // ASSETS
+import MainImage from 'assets/images/chasing-money.svg';
 import FirstSectionImg from 'assets/images/chart-money-analysis.svg';
 import FourthSectionImg from 'assets/images/business-man-in-spaceship.svg';
 import ThirdSectionImg from 'assets/images/pie-chart.svg';
@@ -29,30 +29,43 @@ const Home = () => {
     <div className="home-container">
       <NavigationBar />
 
-      <MainSection />
-      <InformativeSection
-        imgPath={SecondSectionImg}
-        title={firstInformativeSectionTitle}
-        subtitle={firstInformativeSectionSubtitle}
-        backgroundChange
-      />
-      <InformativeSection
-        imgPath={FirstSectionImg}
-        title={secondInformativeSectionTitle}
-        subtitle={secondInformativeSectionSubtitle}
-      />
-      <InformativeSection
-        imgPath={ThirdSectionImg}
-        title={thirdInformativeSectionTitle}
-        subtitle={thirdInformativeSectionSubtitle}
-        backgroundChange
-      />
+      <div className="home-grid-container">
+        <InformativeSection
+          imgPath={MainImage}
+          title={firstInformativeSectionTitle}
+          subtitle={firstInformativeSectionSubtitle}
+          hasButton
+        />
+        <InformativeSection
+          imgPath={SecondSectionImg}
+          title={firstInformativeSectionTitle}
+          subtitle={firstInformativeSectionSubtitle}
+          backgroundChange
+        />
+      </div>
 
-      <InformativeSection
-        imgPath={FourthSectionImg}
-        title={fourthInformativeSectionTitle}
-        subtitle={fourthInformativeSectionSubtitle}
-      />
+      <div className="home-grid-container">
+        <InformativeSection
+          imgPath={FirstSectionImg}
+          title={secondInformativeSectionTitle}
+          subtitle={secondInformativeSectionSubtitle}
+        />
+        <InformativeSection
+          imgPath={ThirdSectionImg}
+          title={thirdInformativeSectionTitle}
+          subtitle={thirdInformativeSectionSubtitle}
+          backgroundChange
+        />
+      </div>
+
+      <div className="home-last-section-container">
+        <InformativeSection
+          imgPath={FourthSectionImg}
+          title={fourthInformativeSectionTitle}
+          subtitle={fourthInformativeSectionSubtitle}
+          hasButton
+        />
+      </div>
     </div>
   );
 };

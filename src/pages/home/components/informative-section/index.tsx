@@ -1,23 +1,22 @@
 // ASSETS
 import './styles.css';
+import LinkButton from 'components/link-button/index';
 
 type Props = {
   imgPath: string;
   title: string;
   subtitle: string;
   backgroundChange?: boolean;
+  hasButton?: boolean;
 };
 
-const InformativeSection = ({
-  imgPath,
-  title,
-  subtitle,
-  backgroundChange,
-}: Props) => {
+const InformativeSection = (props: Props) => {
+  const { imgPath, title, subtitle, backgroundChange, hasButton } = props;
+
   return (
     <div
       className={`information-section-container ${
-        backgroundChange ? 'bg-secondary' : 'reverse'
+        backgroundChange ? 'bg-secondary reverse' : ''
       }`}
     >
       <div className="information-section-img-container">
@@ -28,8 +27,9 @@ const InformativeSection = ({
         />
       </div>
       <div className="information-section-text">
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
+        <h1 className={backgroundChange ? 'text-start' : ''}>{title}</h1>
+        <p className={backgroundChange ? 'text-start' : ''}>{subtitle}</p>
+        {hasButton && <LinkButton text="Acessar aplicativo" path="/login" />}
       </div>
     </div>
   );
