@@ -1,18 +1,18 @@
-.main-section-btn {
+.link-button-container {
+  width: 100%;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 40px;
-  border: none;
-  background-color: var(--green-color-150);
+  border: 2px solid var(--green-color-150);
   border-radius: 10px;
-  font-size: 14px;
   font-weight: 700;
   color: var(--white);
+  background-color: var(--green-color-150);
 }
 
-.main-section-btn:hover {
-  opacity: 0.8;
+.link-button-container:hover {
   transition: 0.5s;
+  color: var(--green-color-150);
+  background-color: var(--white);
 }

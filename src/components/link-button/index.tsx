@@ -8,7 +8,7 @@ type Props = {
 
 const LinkButton = ({ text, path }: Props) => {
   return (
-    <Link className="main-section-btn" to={path}>
+    <Link className="link-button-container" to={path}>
       {text}
     </Link>
   );

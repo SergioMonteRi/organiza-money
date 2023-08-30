@@ -1,19 +1,25 @@
-import { Link, NavLink } from 'react-router-dom';
-
+import { useContext, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { CgMenuGridO } from 'react-icons/cg';
+
+// UTILS
+import { getTokenData } from 'utils/token';
+import { isAuthenticated } from 'utils/auth';
+import { removeAuthData } from 'utils/storage';
+
+// ASSETS
 import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
 
-import 'bootstrap/js/src/collapse.js';
-import './styles.css';
-import { useContext, useEffect } from 'react';
+// AUTH
 import { AuthContext } from 'contex/AuthContex';
-// import { removeAuthData } from 'utils/storage';
-import { isAuthenticated } from 'utils/auth';
-import { getTokenData } from 'utils/token';
+
+// STYLES
+import './styles.css';
+import 'bootstrap/js/src/collapse.js';
 
 const NavigationBar = () => {
-  const { setAuthContextData } = useContext(AuthContext);
-  // const navigation = useNavigate();
+  const { setAuthContextData, authContextData } = useContext(AuthContext);
+  const navigation = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated()) {
@@ -28,14 +34,14 @@ const NavigationBar = () => {
     }
   }, [setAuthContextData]);
 
-  // const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  //   event.preventDefault();
-  //   removeAuthData();
-  //   setAuthContextData({
-  //     authenticated: false,
-  //   });
-  //   navigation('/');
-  // };
+  const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    removeAuthData();
+    setAuthContextData({
+      authenticated: false,
+    });
+    navigation('/');
+  };
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark main-nav">
@@ -60,31 +66,45 @@ const NavigationBar = () => {
         <div className="collapse navbar-collapse" id="easybill-navbar">
           <ul className="navbar-nav offset-md-2 main-menu">
             <li>
-              <NavLink to="/">Sobre</NavLink>
-            </li>
-
-            <li>
               <NavLink to="/">Propósito</NavLink>
             </li>
-            {/* 
-            {authContextData.authenticated ? (
-              <li>
-                <a
-                  href="#logout"
-                  className="page-link"
-                  onClick={handleLogoutClick}
-                >
-                  Logout
-                </a>
-              </li>
-            ) : (
-              <li>
-                <NavLink to="/login" className="page-link">
-                  Login
-                </NavLink>
-              </li>
-            )} */}
+
+            <div className="nav-main-menu-login-logout">
+              {authContextData.authenticated ? (
+                <li>
+                  <a
+                    href="#logout"
+                    className="page-link"
+                    onClick={handleLogoutClick}
+                  >
+                    Logout
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <NavLink to="/login" className="page-link">
+                    Login
+                  </NavLink>
+                </li>
+              )}
+            </div>
           </ul>
+        </div>
+
+        <div className="nav-login-logout">
+          {authContextData.authenticated ? (
+            <NavLink to={'/'} onClick={handleLogoutClick}>
+              Sair
+            </NavLink>
+          ) : (
+            <>
+              <NavLink to="/login">Entrar</NavLink>
+
+              <NavLink className="nav-login-logout-register" to="/register">
+                Registrar-se
+              </NavLink>
+            </>
+          )}
         </div>
       </div>
     </nav>
