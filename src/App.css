@@ -5,14 +5,13 @@
   /* colors */
   --white: #ffffff;
   --green-color: #83e3b4;
-  --grey-color: #6b6b6b;
+  --green-color-150: #29e589;
 
-  /* medias */
-  --media-small: (min-width: 576px);
+  --grey-color: #6b6b6b;
 }
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
 }
 

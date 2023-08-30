@@ -1,5 +1,5 @@
 // COMPONENTS
-import FirstSection from './components/first-section';
+import MainSection from './components/main-section';
 import InformativeSection from './components/informative-section';
 
 // ASSETS
@@ -25,34 +25,32 @@ import './styles.css';
 
 const Home = () => {
   return (
-    <>
-      <FirstSection />
-      <div className="bg-secondary">
-        <InformativeSection
-          imgPath={SecondSectionImg}
-          title={firstInformativeSectionTitle}
-          subtitle={firstInformativeSectionSubtitle}
-        />
-      </div>
+    <div className="home-container">
+      <MainSection />
+      <InformativeSection
+        imgPath={SecondSectionImg}
+        title={firstInformativeSectionTitle}
+        subtitle={firstInformativeSectionSubtitle}
+        backgroundChange
+      />
       <InformativeSection
         imgPath={FirstSectionImg}
         title={secondInformativeSectionTitle}
         subtitle={secondInformativeSectionSubtitle}
       />
-      <div className="bg-secondary">
-        <InformativeSection
-          imgPath={ThirdSectionImg}
-          title={thirdInformativeSectionTitle}
-          subtitle={thirdInformativeSectionSubtitle}
-        />
-      </div>
+      <InformativeSection
+        imgPath={ThirdSectionImg}
+        title={thirdInformativeSectionTitle}
+        subtitle={thirdInformativeSectionSubtitle}
+        backgroundChange
+      />
 
       <InformativeSection
         imgPath={FourthSectionImg}
         title={fourthInformativeSectionTitle}
         subtitle={fourthInformativeSectionSubtitle}
       />
-    </>
+    </div>
   );
 };
 

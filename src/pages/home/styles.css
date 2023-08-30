@@ -1,11 +1,11 @@
 .home-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.home-second-section-container {
-  background-color: var(--green-color);
-}
-
-.home-fourth-section-container {
-  background-color: var(--yellow-color);
+@media screen and (min-width: 992px) {
+  .home-container > div {
+    height: 50%;
+  }
 }
