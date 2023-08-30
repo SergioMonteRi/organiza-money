@@ -1,15 +1,14 @@
-import './styles.css';
-
-// import { useContext } from 'react';
-// import { AuthContext } from 'contex/AuthContex';
+// COMPONENTS
 import FirstSection from './components/first-section';
 import InformativeSection from './components/informative-section';
 
+// ASSETS
 import FirstSectionImg from 'assets/images/chart-money-analysis.svg';
-import FourthSectionImg from 'assets/images/business-man-in-spaceship.png';
+import FourthSectionImg from 'assets/images/business-man-in-spaceship.svg';
 import ThirdSectionImg from 'assets/images/pie-chart.svg';
 import SecondSectionImg from 'assets/images/carrying-money.svg';
 
+// TEXTS
 import {
   firstInformativeSectionSubtitle,
   firstInformativeSectionTitle,
@@ -21,52 +20,26 @@ import {
   thirdInformativeSectionTitle,
 } from 'utils/texts';
 
+// STYLES
+import './styles.css';
+
 const Home = () => {
-  // const { authContextData } = useContext(AuthContext);
-
   return (
-    // <div className="page-container home-container">
-    //   <div className="page-content-container">
-    //     <h1 className="page-main-text">
-    //       Seu salário foi para o espaço? Saiba que organização financeira não é
-    //       coisa de outro mundo.
-    //     </h1>
-
-    //     <p className="page-secondary-text">
-    //       Visualize seus gastos de maneira organizada com nossos gráficos
-    //       analíticos fáceis de interpretar.
-    //     </p>
-
-    //     {authContextData.authenticated ? (
-    //       <ButtonLink text="Acessar dashboard" url="/dashboard" />
-    //     ) : (
-    //       <ButtonLink text="Acessar aplicativo" url="/login" />
-    //     )}
-    //   </div>
-    //   <div className="home-img-container">
-    //     <div className="home-img-animation ">
-    //       <HomeAstronaut />
-    //     </div>
-    //   </div>
-    // </div>
-    // <div className="home-container">
     <>
       <FirstSection />
-
-      <div className="home-second-section-container">
+      <div className="bg-secondary">
         <InformativeSection
           imgPath={SecondSectionImg}
           title={firstInformativeSectionTitle}
           subtitle={firstInformativeSectionSubtitle}
         />
       </div>
-
       <InformativeSection
         imgPath={FirstSectionImg}
         title={secondInformativeSectionTitle}
         subtitle={secondInformativeSectionSubtitle}
       />
-      <div className="home-fourth-section-container">
+      <div className="bg-secondary">
         <InformativeSection
           imgPath={ThirdSectionImg}
           title={thirdInformativeSectionTitle}
@@ -80,8 +53,6 @@ const Home = () => {
         subtitle={fourthInformativeSectionSubtitle}
       />
     </>
-
-    // </div>
   );
 };
 

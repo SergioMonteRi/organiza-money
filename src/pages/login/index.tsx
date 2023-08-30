@@ -1,23 +1,28 @@
-import { Link, useNavigate } from 'react-router-dom';
-
-import './styles.css';
-import { useForm } from 'react-hook-form';
-import { LoginRequest } from 'utils/types/request-types';
-import ButtonRegular from 'components/button-regular';
-import { requestBackendLogin } from 'utils/requests/login';
 import { useContext, useEffect, useState } from 'react';
-import LoginPageAnimation from 'components/loading-page-animation';
-import { saveAuthData } from 'utils/storage';
-import { AuthContext } from 'contex/AuthContex';
-import { getTokenData } from 'utils/token';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { TokenResponse, useGoogleLogin } from '@react-oauth/google';
-import GoogleIcon from 'assets/icons/google.png';
+
+// UTILS
+import { getTokenData } from 'utils/token';
+import { saveAuthData } from 'utils/storage';
+import { LoginRequest } from 'utils/types/request-types';
+import { requestBackendLogin } from 'utils/requests/login';
 import { requestGoogleUserData } from 'utils/requests/user';
 import { GoogleUserDataResponse } from 'utils/types/response-types';
 
+// AUTH
+import { AuthContext } from 'contex/AuthContex';
+
+// COMPONENTS
+
+// ASSETS
+import GoogleIcon from 'assets/icons/google.png';
+
+import './styles.css';
+
 const Login = () => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setAuthContextData } = useContext(AuthContext);
   const [googleLoginResponse, setGoogleLoginResponse] =
     useState<
@@ -37,8 +42,6 @@ const Login = () => {
   const onSubmit = (formData: LoginRequest) => {
     navigate('/dashboard');
 
-    setIsLoading(true);
-
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
@@ -49,17 +52,13 @@ const Login = () => {
         navigate('/dashboard');
       })
       .catch(() => {})
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => {});
 
     navigate('/dashboard');
   };
 
   useEffect(() => {
     if (googleLoginResponse?.access_token) {
-      setIsLoading(true);
-
       requestGoogleUserData(googleLoginResponse.access_token)
         .then((response) => {
           const userData: GoogleUserDataResponse = response.data;
@@ -87,94 +86,88 @@ const Login = () => {
 
           navigate('/dashboard');
         })
-        .finally(() => {
-          setIsLoading(false);
-        });
+        .finally(() => {});
     }
   }, [googleLoginResponse, navigate, setAuthContextData]);
 
   return (
     <div className="page-container">
-      {isLoading ? (
-        <LoginPageAnimation />
-      ) : (
-        <>
-          <div className="page-content-container ">
-            <h1 className="page-main-text">
-              Embarque conosco em sua jornada para organização financeira.
-            </h1>
+      <div>
+        <div className="page-content-container ">
+          <h1 className="page-main-text">
+            Embarque conosco em sua jornada para organização financeira.
+          </h1>
 
-            <div className="login-create-account-container">
-              <p className="login-create-account-text">Novo por aqui?</p>
-              <Link
-                className="login-create-account-text login-create-account-link"
-                to={'/'}
-              >
-                Crie uma conta.
-              </Link>
+          <div className="login-create-account-container">
+            <p className="login-create-account-text">Novo por aqui?</p>
+            <Link
+              className="login-create-account-text login-create-account-link"
+              to={'/'}
+            >
+              Crie uma conta.
+            </Link>
+          </div>
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="login-form-field-container">
+              <input
+                {...register('username', {
+                  // required: 'Campo obrigatório',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Email inválido',
+                  },
+                })}
+                type="text"
+                className={`login-form-field-input form-control base-input ${
+                  errors.username ? 'is-invalid' : ''
+                }`}
+                placeholder="Email"
+                name="username"
+              />
+              <div className="invalid-feedback d-block">
+                {errors.username?.message}
+              </div>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="login-form-field-container">
-                <input
-                  {...register('username', {
-                    // required: 'Campo obrigatório',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Email inválido',
-                    },
-                  })}
-                  type="text"
-                  className={`login-form-field-input form-control base-input ${
-                    errors.username ? 'is-invalid' : ''
-                  }`}
-                  placeholder="Email"
-                  name="username"
-                />
-                <div className="invalid-feedback d-block">
-                  {errors.username?.message}
-                </div>
-              </div>
-
-              <div className="login-form-field-container">
-                <input
-                  {...register('password', {
-                    // required: 'Campo obrigatório',
-                  })}
-                  type="password"
-                  className={`login-form-field-input form-control base-input ${
-                    errors.password ? 'is-invalid' : ''
-                  }`}
-                  placeholder="Senha"
-                  name="password"
-                />
-                <div className="invalid-feedback d-block">
-                  {errors.password?.message}
-                </div>
-              </div>
-
-              <div className="login-form-btn-container">
-                <ButtonRegular text="Entrar" />
-              </div>
-            </form>
-
-            <button
-              className="login-form-btn-google-login"
-              onClick={() => googleLogin()}
-            >
-              <img
-                className="login-form-btn-google-icon"
-                src={GoogleIcon}
-                alt="Google icon"
+            <div className="login-form-field-container">
+              <input
+                {...register('password', {
+                  // required: 'Campo obrigatório',
+                })}
+                type="password"
+                className={`login-form-field-input form-control base-input ${
+                  errors.password ? 'is-invalid' : ''
+                }`}
+                placeholder="Senha"
+                name="password"
               />
-              Login com Google
-            </button>
-          </div>
-          <div className="login-img-container">
-            <div className="login-img-animation"></div>
-          </div>
-        </>
-      )}
+              <div className="invalid-feedback d-block">
+                {errors.password?.message}
+              </div>
+            </div>
+
+            <div className="login-form-btn-container">
+              <button>Entrar</button>
+            </div>
+          </form>
+
+          <button
+            className="login-form-btn-google-login"
+            onClick={() => googleLogin()}
+          >
+            <img
+              className="login-form-btn-google-icon"
+              src={GoogleIcon}
+              alt="Google icon"
+            />
+            Login com Google
+          </button>
+        </div>
+        <div className="login-img-container">
+          <div className="login-img-animation"></div>
+        </div>
+      </div>
     </div>
   );
 };

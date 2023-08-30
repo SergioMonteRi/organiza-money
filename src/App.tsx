@@ -11,12 +11,6 @@ import { AuthContext, AuthContextData } from 'contex/AuthContex';
 
 import 'assets/styles/custom.scss';
 import './App.css';
-import './styles/page.css';
-import './styles/keyframes.css';
-import './styles/link.css';
-import './styles/button.css';
-import './styles/dashboard.css';
-import './styles/constants.css';
 
 function App() {
   const [authContextData, setAuthContextData] = useState<AuthContextData>({

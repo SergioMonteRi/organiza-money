@@ -1,6 +1,6 @@
 import './styles.css';
 
-import BarChart from 'components/bar-chart';
+import BarChart from 'pages/dashboard/components/bar-chart';
 
 const SpendsByDate = () => {
   return (

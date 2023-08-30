@@ -1,14 +1,21 @@
-import Filter from 'components/filter';
-import { AuthContext } from 'contex/AuthContex';
 import { useContext, useEffect } from 'react';
-import { requestGoogleUserData } from 'utils/requests/user';
+
+// AUTH
+import { AuthContext } from 'contex/AuthContex';
+
+// UTILS
 import { getAuthData } from 'utils/storage';
+import { requestGoogleUserData } from 'utils/requests/user';
 import { GoogleUserDataResponse } from 'utils/types/response-types';
 
+// COMPONENTS
+import Filter from './components/filter';
+import PieChart from './components/pie-chart';
+import SpendSummary from './components/spend-summary';
+import SpendsByDate from './components/spends-by-date';
+
+// STYLES
 import './styles.css';
-import SpendsByDate from 'components/spends-by-date';
-import SpendSummary from 'components/spend-summary';
-import PieChart from 'components/pie-chart';
 
 const Dashboard = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);

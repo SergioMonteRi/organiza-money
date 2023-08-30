@@ -3,81 +3,9 @@
 }
 
 .home-second-section-container {
-  background-color: var(--pink-color);
+  background-color: var(--green-color);
 }
 
 .home-fourth-section-container {
   background-color: var(--yellow-color);
 }
-
-/* .home-container {
-  flex-direction: column;
-  align-items: center;
-  background-image: url('assets/images/background_home_mobile.svg');
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-position-y: 100%;
-  background-size: 100%;
-}
-
-.home-img-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  animation: slideDown 2s ease-in-out forwards;
-}
-
-.home-img-container svg {
-  height: 90%;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  transform-origin: bottom;
-  animation: zigzag 4s linear infinite;
-}
-
-.home-img-animation {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-@media screen and (min-width: 576px) {
-  .home-img-container {
-    height: 60%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .home-container {
-    background-position-y: 175%;
-  }
-
-  .home-img-container {
-    height: 65%;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .home-container {
-    background-position-y: 200%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .home-container {
-    flex-direction: row;
-    background-image: url('assets/images/background_home_big.svg');
-    background-position-y: 150%;
-  }
-
-  .home-img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 90px);
-  }
-} */
