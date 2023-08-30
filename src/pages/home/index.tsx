@@ -22,10 +22,13 @@ import {
 
 // STYLES
 import './styles.css';
+import NavigationBar from 'components/navigation-bar';
 
 const Home = () => {
   return (
     <div className="home-container">
+      <NavigationBar />
+
       <MainSection />
       <InformativeSection
         imgPath={SecondSectionImg}

@@ -18,6 +18,8 @@ import { AuthContext } from 'contex/AuthContex';
 
 // ASSETS
 import GoogleIcon from 'assets/icons/google.png';
+import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
+import FinancialGrowth from 'assets/images/financial-growth.png';
 
 import './styles.css';
 
@@ -28,6 +30,7 @@ const Login = () => {
     useState<
       Omit<TokenResponse, 'error' | 'error_description' | 'error_uri'>
     >();
+  const [hasLoginError, setHasLoginError] = useState(false);
 
   const {
     register,
@@ -40,8 +43,6 @@ const Login = () => {
   });
 
   const onSubmit = (formData: LoginRequest) => {
-    navigate('/dashboard');
-
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
@@ -51,10 +52,10 @@ const Login = () => {
         });
         navigate('/dashboard');
       })
-      .catch(() => {})
+      .catch(() => {
+        setHasLoginError(true);
+      })
       .finally(() => {});
-
-    navigate('/dashboard');
   };
 
   useEffect(() => {
@@ -91,81 +92,102 @@ const Login = () => {
   }, [googleLoginResponse, navigate, setAuthContextData]);
 
   return (
-    <div className="page-container">
-      <div>
-        <div className="page-content-container ">
-          <h1 className="page-main-text">
-            Embarque conosco em sua jornada para organização financeira.
-          </h1>
+    <div className="login-container">
+      <div className="login-content-container">
+        <Link className="login-icon-container" to={'/'}>
+          <AppIcon className="nav-logo-icon" />
+          <h4 className="nav-logo-text">Organiza Money</h4>
+        </Link>
 
-          <div className="login-create-account-container">
-            <p className="login-create-account-text">Novo por aqui?</p>
-            <Link
-              className="login-create-account-text login-create-account-link"
-              to={'/'}
-            >
-              Crie uma conta.
-            </Link>
+        {hasLoginError && (
+          <div className="alert alert-danger">Erro ao tentar efetuar login</div>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="login-form-field-container">
+            <label className="login-form-field-label" htmlFor="username">
+              Email
+            </label>
+            <input
+              {...register('username', {
+                required: 'Campo obrigatório',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Email inválido',
+                },
+              })}
+              type="text"
+              className={`login-form-field-input ${
+                errors.username ? 'is-invalid' : ''
+              }`}
+              placeholder="Email"
+              name="username"
+            />
+            <div className="invalid-feedback d-block">
+              {errors.username?.message}
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="login-form-field-container">
-              <input
-                {...register('username', {
-                  // required: 'Campo obrigatório',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Email inválido',
-                  },
-                })}
-                type="text"
-                className={`login-form-field-input form-control base-input ${
-                  errors.username ? 'is-invalid' : ''
-                }`}
-                placeholder="Email"
-                name="username"
-              />
-              <div className="invalid-feedback d-block">
-                {errors.username?.message}
-              </div>
-            </div>
+          <div className="login-form-field-container">
+            <label className="login-form-field-label" htmlFor="username">
+              Senha
+            </label>
 
-            <div className="login-form-field-container">
-              <input
-                {...register('password', {
-                  // required: 'Campo obrigatório',
-                })}
-                type="password"
-                className={`login-form-field-input form-control base-input ${
-                  errors.password ? 'is-invalid' : ''
-                }`}
-                placeholder="Senha"
-                name="password"
-              />
-              <div className="invalid-feedback d-block">
-                {errors.password?.message}
-              </div>
-            </div>
-
-            <div className="login-form-btn-container">
-              <button>Entrar</button>
-            </div>
-          </form>
-
-          <button
-            className="login-form-btn-google-login"
-            onClick={() => googleLogin()}
-          >
-            <img
-              className="login-form-btn-google-icon"
-              src={GoogleIcon}
-              alt="Google icon"
+            <input
+              {...register('password', {
+                required: 'Campo obrigatório',
+              })}
+              type="password"
+              className={`login-form-field-input  ${
+                errors.password ? 'is-invalid' : ''
+              }`}
+              placeholder="Senha"
+              name="password"
             />
-            Login com Google
-          </button>
+            <div className="invalid-feedback d-block">
+              {errors.password?.message}
+            </div>
+          </div>
+
+          <button className="login-form-button">Entrar</button>
+        </form>
+
+        <div className="login-separator-container">
+          <hr />
+          <span>OU</span>
+          <hr />
         </div>
-        <div className="login-img-container">
-          <div className="login-img-animation"></div>
+
+        <div className="login-create-account-container">
+          <p>Não tem uma conta?</p>
+          <Link to={'/'}>Registre-se aqui</Link>
+        </div>
+
+        <button
+          className="login-form-google-button"
+          onClick={() => googleLogin()}
+        >
+          <img
+            className="login-form-google-icon"
+            src={GoogleIcon}
+            alt="Google icon"
+          />
+          <span>Entrar com Google</span>
+        </button>
+      </div>
+
+      <div className="login-img-container">
+        <div className="login-img-background bg-green-1">
+          <div className="login-img-background bg-green-2">
+            <div className="login-img-background bg-secondary">
+              <img
+                className="login-img"
+                src={FinancialGrowth}
+                alt="Crescimento financeiro"
+              />
+              <p>É hora de se organizar, visualizar e poupar.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
