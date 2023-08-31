@@ -12,6 +12,7 @@ const SpendSummary = () => {
       <SpendSummaryCard icon={<AverageIcon />} label="Média" value="1234,50" />
       <SpendSummaryCard icon={<MaxIcon />} label="Máximo" value="1234,50" />
       <SpendSummaryCard icon={<MinIcon />} label="Média" value="1234,50" />
+      <SpendSummaryCard icon={<MinIcon />} label="Média" value="1234,50" />
     </div>
   );
 };

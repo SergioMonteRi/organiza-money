@@ -1,28 +1,27 @@
 .spends-by-date-container {
   width: 100%;
-  padding: 1rem;
 }
 
 .spends-by-date-title {
-  font-size: 1.5rem;
-  color: var(--light-color);
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .spends-by-date-period {
   display: block;
-  color: var(--light-grey);
-  margin: 0.2rem 0 1rem 0;
 }
 
 .spends-by-date-quantity {
-  font-size: 1.8rem;
-  color: var(--light-color);
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 16px;
 }
 
 .spends-by-date-quantity-label {
   display: block;
-  color: var(--green-color);
+  font-weight: bold;
+  color: var(--green-color-80);
+  font-size: 18px;
 }
 
 @media screen and (min-width: 576px) {

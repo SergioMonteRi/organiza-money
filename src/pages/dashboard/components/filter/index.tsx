@@ -2,7 +2,7 @@ import FlatPicker from 'react-flatpickr';
 import flatpickrLib from 'flatpickr';
 import { Portuguese } from 'flatpickr/dist/l10n/pt';
 
-import 'flatpickr/dist/themes/dark.css';
+import 'flatpickr/dist/themes/material_green.css';
 import './styles.css';
 
 flatpickrLib.localize(Portuguese);
@@ -13,9 +13,9 @@ const Filter = () => {
   };
 
   return (
-    <div className="filter-container dashboard-card">
+    <div className="dashboard-card">
       <FlatPicker
-        className="filter-input"
+        className=" filter-input"
         placeholder="Selecione um período"
         onChange={onChangeDate}
         options={{

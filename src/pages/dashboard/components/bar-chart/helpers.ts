@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 export const chartOptions = {
   legend: {
     show: false,
+    position: 'left',
   },
   noData: {
     text: 'Sem resultados',
@@ -10,16 +11,16 @@ export const chartOptions = {
     verticalAlign: 'middle',
     offsetY: -15,
     style: {
-      color: '#FFF',
+      color: '#08B976',
       fontSize: '18px',
-      fontFamily: 'Lato, sans-serif',
+      fontFamily: 'Raleway, sans-serif',
     },
   },
   chart: {
-    foreColor: '#b4bed2',
+    foreColor: '#6b6b6b',
     height: '100%',
     width: '100%',
-    fontFamily: 'Lato, sans-serif',
+    fontFamily: 'Raleway, sans-serif',
     offsetX: -10,
     locales: [
       {
@@ -76,7 +77,7 @@ export const chartOptions = {
   yaxis: {},
   fill: {
     opacity: 1,
-    colors: ['#3e82f7'],
+    colors: ['#08B976'],
   },
   tooltip: {
     theme: 'dark',

@@ -43,6 +43,8 @@ const Login = () => {
   });
 
   const onSubmit = (formData: LoginRequest) => {
+    navigate('/dashboard');
+
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
@@ -110,7 +112,7 @@ const Login = () => {
             </label>
             <input
               {...register('username', {
-                required: 'Campo obrigatório',
+                // required: 'Campo obrigatório',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   message: 'Email inválido',
@@ -135,7 +137,7 @@ const Login = () => {
 
             <input
               {...register('password', {
-                required: 'Campo obrigatório',
+                // required: 'Campo obrigatório',
               })}
               type="password"
               className={`login-form-field-input  ${
