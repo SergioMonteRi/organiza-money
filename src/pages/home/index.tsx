@@ -14,6 +14,8 @@ import {
   firstInformativeSectionTitle,
   fourthInformativeSectionSubtitle,
   fourthInformativeSectionTitle,
+  mainInformationSectionSubtitle,
+  mainInformationSectionTitle,
   secondInformativeSectionSubtitle,
   secondInformativeSectionTitle,
   thirdInformativeSectionSubtitle,
@@ -32,8 +34,8 @@ const Home = () => {
       <div className="home-grid-container">
         <InformativeSection
           imgPath={MainImage}
-          title={firstInformativeSectionTitle}
-          subtitle={firstInformativeSectionSubtitle}
+          title={mainInformationSectionTitle}
+          subtitle={mainInformationSectionSubtitle}
           hasButton
         />
         <InformativeSection

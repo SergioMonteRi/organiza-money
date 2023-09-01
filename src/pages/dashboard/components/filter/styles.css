@@ -13,6 +13,31 @@
   font-weight: 700;
 }
 
-.filter-input:focus {
-  border: none;
+.filter-input__control {
+  border-radius: 10px !important;
+  background-color: var(--green-color) !important;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  height: 50px;
+  border: none !important;
+}
+
+.filter-input__single-value {
+  color: var(--white) !important;
+  padding: 0 5px;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 700;
+}
+
+.filter-input__placeholder {
+  color: var(--white) !important;
+  font-weight: 700;
+}
+
+.filter-input__indicator {
+  color: var(--white) !important;
+}
+
+.filter-input__indicator-separator {
+  background-color: var(--white) !important;
 }

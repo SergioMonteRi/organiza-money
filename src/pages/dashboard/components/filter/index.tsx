@@ -1,4 +1,6 @@
 import FlatPicker from 'react-flatpickr';
+import Select from 'react-select';
+
 import flatpickrLib from 'flatpickr';
 import { Portuguese } from 'flatpickr/dist/l10n/pt';
 
@@ -12,10 +14,16 @@ const Filter = () => {
     console.log(dates);
   };
 
+  const options = [
+    { value: 'chocolate', label: 'Mercado' },
+    { value: 'strawberry', label: 'Farmácia' },
+    { value: 'vanilla', label: 'Faculdade' },
+  ];
+
   return (
     <div className="dashboard-card">
       <FlatPicker
-        className=" filter-input"
+        className="filter-input"
         placeholder="Selecione um período"
         onChange={onChangeDate}
         options={{
@@ -25,12 +33,11 @@ const Filter = () => {
         }}
       />
 
-      <select className="filter-input">
-        <option value="">Selecione um gênero</option>
-        <option value="">Male</option>
-        <option value="">Female</option>
-        <option value="">Other</option>
-      </select>
+      <Select
+        options={options}
+        classNamePrefix="filter-input"
+        placeholder="Selecione um tipo de gasto"
+      />
     </div>
   );
 };

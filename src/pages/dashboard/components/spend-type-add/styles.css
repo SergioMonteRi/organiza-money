@@ -1,24 +1,30 @@
-.link-button-container {
+.spend-type-add-container {
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  column-gap: 16px;
+}
+
+.spend-type-add-button {
   width: 100%;
-  height: 35px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--green-color-150);
+  border: 2px solid var(--green-color);
   border-radius: 10px;
   font-weight: 700;
   color: var(--white);
-  background-color: var(--green-color-150);
+  background-color: var(--green-color);
 }
 
-.link-button-container:hover {
+.spend-type-add-button:hover {
   transition: 0.5s;
   color: var(--green-color-150);
   background-color: var(--white);
 }
 
 @media screen and (min-width: 1200px) {
-  .link-button-container {
+  .spend-type-add-button {
     height: 50px;
   }
 }

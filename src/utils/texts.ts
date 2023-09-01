@@ -1,3 +1,9 @@
+export const mainInformationSectionTitle =
+  'Descomplique suas finanças: enxergue seus gastos com clareza';
+
+export const mainInformationSectionSubtitle =
+  'Um basta para aquela sensação de não saber para onde vai o seu dinheiro';
+
 export const firstInformativeSectionTitle =
   'Te dar controle sobre seus gastos é o nosso propósito';
 
