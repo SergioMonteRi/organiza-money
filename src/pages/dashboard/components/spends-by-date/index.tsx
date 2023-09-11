@@ -4,7 +4,7 @@ import BarChart from 'pages/dashboard/components/bar-chart';
 
 const SpendsByDate = () => {
   return (
-    <div className="dashboard-card">
+    <div className="dashboard-card spends-by-date-container">
       <div className="spends-by-date-information">
         <div>
           <h4 className="spends-by-date-title">Evolução dos gastos</h4>

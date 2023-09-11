@@ -69,14 +69,14 @@
     border-radius: 10px;
     margin-left: 16px;
     border: 2px solid var(--green-color-150);
-    background-color: var(--white);
+    background-color: var(--white-color);
     color: var(--green-color-150) !important;
   }
 
   .nav-login-logout-register:hover {
     transition: 0.5s;
     background-color: var(--green-color-150);
-    color: var(--white) !important;
+    color: var(--white-color) !important;
   }
 }
 

@@ -7,14 +7,14 @@
   border: 2px solid var(--green-color-150);
   border-radius: 10px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--white-color);
   background-color: var(--green-color-150);
 }
 
 .link-button-container:hover {
   transition: 0.5s;
   color: var(--green-color-150);
-  background-color: var(--white);
+  background-color: var(--white-color);
 }
 
 @media screen and (min-width: 1200px) {

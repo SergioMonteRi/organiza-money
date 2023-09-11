@@ -5,3 +5,9 @@
   width: 100%;
   gap: 16px;
 }
+
+@media screen and (min-width: 768px) {
+  .spend-summary-container {
+    gap: 32px;
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "content": [
+    {
+      "id": 79,
+      "date": "2017-01-31",
+      "volume": 15,
+      "total": 292.0,
+      "gender": "FEMALE",
+      "categoryName": "Utilidades domésticas",
+      "paymentMethod": "Débito",
+      "storeName": "Ituiutaba"
+    },
+    {
+      "id": 80,
+      "date": "2017-01-31",
+      "volume": 18,
+      "total": 290.0,
+      "gender": "FEMALE",
+      "categoryName": "Utilidades domésticas",
+      "paymentMethod": "Crédito",
+      "storeName": "Uberlândia"
+    },
+    {
+      "id": 76,
+      "date": "2017-01-30",
+      "volume": 7,
+      "total": 132.0,
+      "gender": "FEMALE",
+      "categoryName": "Cosméticos e higiene pessoal",
+      "paymentMethod": "Dinheiro",
+      "storeName": "Uberlândia"
+    },
+    {
+      "id": 75,
+      "date": "2017-01-30",
+      "volume": 2,
+      "total": 131.0,
+      "gender": "FEMALE",
+      "categoryName": "Comidas e bebidas",
+      "paymentMethod": "Crédito",
+      "storeName": "Uberaba"
+    },
+    {
+      "id": 73,
+      "date": "2017-01-29",
+      "volume": 25,
+      "total": 246.0,
+      "gender": "FEMALE",
+      "categoryName": "Comidas e bebidas",
+      "paymentMethod": "Crédito",
+      "storeName": "Ituiutaba"
+    },
+    {
+      "id": 72,
+      "date": "2017-01-29",
+      "volume": 8,
+      "total": 95.0,
+      "gender": "FEMALE",
+      "categoryName": "Utilidades domésticas",
+      "paymentMethod": "Débito",
+      "storeName": "Araguari"
+    },
+    {
+      "id": 69,
+      "date": "2017-01-28",
+      "volume": 19,
+      "total": 51.0,
+      "gender": "FEMALE",
+      "categoryName": "Cosméticos e higiene pessoal",
+      "paymentMethod": "Crédito",
+      "storeName": "Uberlândia"
+    },
+    {
+      "id": 67,
+      "date": "2017-01-27",
+      "volume": 2,
+      "total": 280.0,
+      "gender": "FEMALE",
+      "categoryName": "Comidas e bebidas",
+      "paymentMethod": "Crédito",
+      "storeName": "Araguari"
+    },
+    {
+      "id": 66,
+      "date": "2017-01-26",
+      "volume": 1,
+      "total": 71.0,
+      "gender": "FEMALE",
+      "categoryName": "Cosméticos e higiene pessoal",
+      "paymentMethod": "Débito",
+      "storeName": "Uberlândia"
+    },
+    {
+      "id": 64,
+      "date": "2017-01-25",
+      "volume": 13,
+      "total": 261.0,
+      "gender": "FEMALE",
+      "categoryName": "Utilidades domésticas",
+      "paymentMethod": "Crédito",
+      "storeName": "Ituiutaba"
+    },
+    {
+      "id": 62,
+      "date": "2017-01-24",
+      "volume": 27,
+      "total": 218.0,
+      "gender": "FEMALE",
+      "categoryName": "Roupas e acessórios",
+      "paymentMethod": "Crédito",
+      "storeName": "Ituiutaba"
+    },
+    {
+      "id": 61,
+      "date": "2017-01-24",
+      "volume": 6,
+      "total": 132.0,
+      "gender": "FEMALE",
+      "categoryName": "Comidas e bebidas",
+      "paymentMethod": "Dinheiro",
+      "storeName": "Araguari"
+    }
+  ],
+  "pageable": {
+    "sort": { "sorted": true, "unsorted": false, "empty": false },
+    "pageNumber": 0,
+    "pageSize": 12,
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": false,
+  "totalPages": 4,
+  "totalElements": 46,
+  "first": true,
+  "size": 12,
+  "number": 0,
+  "sort": { "sorted": true, "unsorted": false, "empty": false },
+  "numberOfElements": 12,
+  "empty": false
+}

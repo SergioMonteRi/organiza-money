@@ -3,7 +3,8 @@
 
 :root {
   /* colors */
-  --white: #ffffff;
+  --white-color: #ffffff;
+  --grey-soft-color: #e1e1e1;
   --green-color: #83e3b4;
   --green-color-150: #29e589;
   --green-color-80: #08b976;
@@ -24,6 +25,12 @@ a {
   margin: 0;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   height: 100vh;
   display: flex;
@@ -38,5 +45,11 @@ a {
   border-radius: 10px;
   padding: 16px;
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard-card {
+    padding: 24px;
+  }
 }

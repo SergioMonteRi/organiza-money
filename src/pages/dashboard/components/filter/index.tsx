@@ -21,7 +21,7 @@ const Filter = () => {
   ];
 
   return (
-    <div className="dashboard-card">
+    <div className="dashboard-card filter-container">
       <FlatPicker
         className="filter-input"
         placeholder="Selecione um período"
