@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Mercado"
+  },
+  {
+    "id": 2,
+    "name": "Faculdade"
+  },
+  {
+    "id": 3,
+    "name": "Escola"
+  },
+  {
+    "id": 4,
+    "name": "Farmácia"
+  },
+  {
+    "id": 5,
+    "name": "Convênio médico"
+  }
+]

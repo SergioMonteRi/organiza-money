@@ -8,6 +8,8 @@ import { requestBackend } from 'utils/requests/request';
 
 import Pagination from 'components/pagination';
 
+import response from './response.json';
+
 import './styles.css';
 
 export type SaleData = {
@@ -57,7 +59,7 @@ const SpendTable = () => {
     <div className="dashboard-card">
       <h4 className="spends-by-date-title">Registro dos gastos</h4>
 
-      {page?.content ? (
+      {response?.content ? (
         <>
           <div className="spends-table-container">
             <table className="spends-table">
@@ -73,7 +75,7 @@ const SpendTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {page?.content.map((sale) => (
+                {response.content.map((sale) => (
                   <tr key={sale.id}>
                     <td>{sale.id}</td>
                     <td>{formatDate(sale.date)}</td>
