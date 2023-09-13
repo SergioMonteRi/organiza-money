@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // PAGES
 import Home from 'pages/home';
 import Login from 'pages/login';
+import Redirect from 'pages/redirect';
 import Dashboard from 'pages/dashboard';
 
 // AUTH
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<Redirect />} />
           </Routes>
         </AuthContext.Provider>
       </BrowserRouter>
