@@ -1,5 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 
+import { SpendByDate } from 'utils/types/types';
+
 export const chartOptions = {
   legend: {
     show: false,
@@ -88,3 +90,16 @@ export const chartOptions = {
     },
   },
 } as ApexOptions;
+
+export const buildChartSeries = (spendByDate: SpendByDate[] = []) => {
+  return spendByDate.map(({ date, sum }) => ({
+    x: date,
+    y: sum,
+  }));
+};
+
+export const sumSpendsByDate = (spendByDate: SpendByDate[] = []) => {
+  return spendByDate.reduce((previousValue, currentValue) => {
+    return previousValue + currentValue.sum;
+  }, 0);
+};

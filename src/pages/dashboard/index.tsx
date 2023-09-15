@@ -1,3 +1,18 @@
+import { useEffect, useMemo, useState } from 'react';
+
+// 3RD PARTY
+import Swal from 'sweetalert2';
+import { AxiosRequestConfig } from 'axios';
+
+// UTILS
+import {
+  FilterData,
+  PieChartConfig,
+  SalesByStoreData,
+} from 'utils/types/types';
+import { buildFilterParams, requestBackend } from 'utils/requests/request';
+import { buildSalesByStoreChart } from 'utils/requests/formatters';
+
 // COMPONENTS
 import Filter from './components/filter';
 import PieChart from './components/pie-chart';
@@ -13,9 +28,34 @@ import coin from 'assets/images/coin.png';
 
 // STYLES
 import './styles.css';
-import Swal from 'sweetalert2';
 
 const Dashboard = () => {
+  const [filterData, setFilterData] = useState<FilterData>();
+  const [salesByStore, setSalesByStore] = useState<PieChartConfig>();
+
+  const requestParams = useMemo(
+    () => buildFilterParams(filterData),
+    [filterData]
+  );
+
+  const onFilterChange = (filter: FilterData) => {
+    setFilterData(filter);
+  };
+
+  useEffect(() => {
+    const params: AxiosRequestConfig = {
+      method: 'GET',
+      url: '/sales/by-store',
+      params: requestParams,
+    };
+
+    requestBackend(params).then((response) => {
+      const spendsByDateResponse: SalesByStoreData[] = response.data;
+      const newSpendsByType = buildSalesByStoreChart(spendsByDateResponse);
+      setSalesByStore(newSpendsByType);
+    });
+  }, [requestParams]);
+
   return (
     <div className="dashobard-container">
       <div
@@ -33,17 +73,17 @@ const Dashboard = () => {
       <div className="dashboard-content">
         <ProfileCard />
         <SpendTypeAdd />
-        <Filter />
-        <SpendsByDate />
+        <Filter onFilterChange={onFilterChange} />
+        <SpendsByDate filterData={filterData} />
         <div className="spend-overview-container">
           <SpendSummary />
           <PieChart
             name="Gastos"
-            labels={['Mercado', 'Farmácia', 'Escola']}
-            series={[25, 50, 30]}
+            labels={salesByStore?.labels}
+            series={salesByStore?.series}
           />
         </div>
-        <SpendTable />
+        <SpendTable filterData={filterData} />
       </div>
     </div>
   );

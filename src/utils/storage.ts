@@ -1,4 +1,4 @@
-import { LoginResponse } from './types/response-types';
+import { LoginResponse } from './types/types';
 
 const tokenKey = 'authData';
 

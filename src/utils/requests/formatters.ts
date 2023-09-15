@@ -1,4 +1,5 @@
 import { GenderData } from 'pages/dashboard/components/spend-table';
+import { SalesByPaymentMethod, SalesByStoreData } from 'utils/types/types';
 
 export const formatPrice = (price: number) => {
   return new Intl.NumberFormat('pt-BR', {
@@ -26,4 +27,24 @@ export const formatGender = (gender: GenderData) => {
   };
 
   return textByGender[gender];
+};
+
+export const buildSalesByStoreChart = (sales: SalesByStoreData[]) => {
+  const labels = sales.map((sale) => sale.storeName);
+  const series = sales.map((sale) => sale.sum);
+
+  return {
+    labels,
+    series,
+  };
+};
+
+export const buildSalesByPaymentMethod = (sales: SalesByPaymentMethod[]) => {
+  const labels = sales.map((sale) => sale.description);
+  const series = sales.map((sale) => sale.sum);
+
+  return {
+    labels,
+    series,
+  };
 };

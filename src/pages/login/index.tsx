@@ -1,15 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { TokenResponse, useGoogleLogin } from '@react-oauth/google';
 
 // UTILS
 import { getTokenData } from 'utils/token';
 import { saveAuthData } from 'utils/storage';
 import { LoginRequest } from 'utils/types/request-types';
 import { requestBackendLogin } from 'utils/requests/login';
-import { requestGoogleUserData } from 'utils/requests/user';
-import { GoogleUserDataResponse } from 'utils/types/response-types';
 
 // AUTH
 import { AuthContext } from 'contex/AuthContex';
@@ -17,7 +14,6 @@ import { AuthContext } from 'contex/AuthContex';
 // COMPONENTS
 
 // ASSETS
-import GoogleIcon from 'assets/icons/google.png';
 import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
 import FinancialGrowth from 'assets/images/financial-growth.png';
 
@@ -25,11 +21,9 @@ import './styles.css';
 
 const Login = () => {
   const navigate = useNavigate();
+
   const { setAuthContextData } = useContext(AuthContext);
-  const [googleLoginResponse, setGoogleLoginResponse] =
-    useState<
-      Omit<TokenResponse, 'error' | 'error_description' | 'error_uri'>
-    >();
+
   const [hasLoginError, setHasLoginError] = useState(false);
 
   const {
@@ -37,10 +31,6 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginRequest>();
-
-  const googleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => setGoogleLoginResponse(codeResponse),
-  });
 
   const onSubmit = (formData: LoginRequest) => {
     navigate('/dashboard');
@@ -59,39 +49,6 @@ const Login = () => {
       })
       .finally(() => {});
   };
-
-  useEffect(() => {
-    if (googleLoginResponse?.access_token) {
-      requestGoogleUserData(googleLoginResponse.access_token)
-        .then((response) => {
-          const userData: GoogleUserDataResponse = response.data;
-
-          saveAuthData({
-            access_token: googleLoginResponse.access_token,
-            expires_in: googleLoginResponse.expires_in,
-            scope: googleLoginResponse.scope,
-            token_type: googleLoginResponse.token_type,
-            userFirstName: userData.given_name,
-            userId: 1,
-            googleUser: true,
-          });
-
-          setAuthContextData({
-            authenticated: true,
-            tokenData: {
-              authorities: ['ROLE_OPERATOR'],
-              user_name: userData?.given_name,
-              exp: googleLoginResponse.expires_in,
-              name: userData.name,
-              picture: userData.picture,
-            },
-          });
-
-          navigate('/dashboard');
-        })
-        .finally(() => {});
-    }
-  }, [googleLoginResponse, navigate, setAuthContextData]);
 
   return (
     <div className="login-container">
@@ -164,18 +121,6 @@ const Login = () => {
           <p>Não tem uma conta?</p>
           <Link to={'/'}>Registre-se aqui</Link>
         </div>
-
-        <button
-          className="login-form-google-button"
-          onClick={() => googleLogin()}
-        >
-          <img
-            className="login-form-google-icon"
-            src={GoogleIcon}
-            alt="Google icon"
-          />
-          <span>Entrar com Google</span>
-        </button>
       </div>
 
       <div className="login-img-container">

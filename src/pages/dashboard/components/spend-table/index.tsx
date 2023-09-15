@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
+// 3RD PARTY
 import { AxiosRequestConfig } from 'axios';
 
-import { formatDate } from 'utils/requests/formatters';
-import { SpringPage } from 'utils/types/response-types';
-import { requestBackend } from 'utils/requests/request';
+// UTILS
+import { formatDate, formatGender } from 'utils/requests/formatters';
+import { buildFilterParams, requestBackend } from 'utils/requests/request';
 
+// TYPES
+import { FilterData, SpringPage } from 'utils/types/types';
+
+// COMPONENTS
 import Pagination from 'components/pagination';
 
-import response from './response.json';
-
+// STYLES
 import './styles.css';
 
 export type SaleData = {
@@ -29,37 +33,48 @@ export type SalesResponse = {
 
 export type GenderData = 'MALE' | 'FEMALE' | 'OTHER';
 
-const SpendTable = () => {
+type Props = {
+  filterData?: FilterData;
+};
+
+const SpendTable = ({ filterData }: Props) => {
   const [page, setPage] = useState<SpringPage<SaleData>>();
 
-  const getSpends = (pageNumber: number) => {
-    const params: AxiosRequestConfig = {
-      method: 'GET',
-      url: '/sales',
-      params: {
-        page: pageNumber,
-        size: 12,
-      },
-    };
+  const requestParams = useMemo(
+    () => buildFilterParams(filterData),
+    [filterData]
+  );
 
-    requestBackend(params)
-      .then((response) => {
-        setPage(response.data);
-      })
-      .catch(() => {
-        console.error('Error to fetch sales by store');
-      });
-  };
+  const getSpends = useCallback(
+    (pageNumber: number) => {
+      const params: AxiosRequestConfig = {
+        method: 'GET',
+        url: '/sales',
+        params: {
+          ...requestParams,
+          page: pageNumber,
+          size: 12,
+        },
+      };
+
+      requestBackend(params)
+        .then((response) => {
+          setPage(response.data);
+        })
+        .catch(() => {});
+    },
+    [requestParams]
+  );
 
   useEffect(() => {
     getSpends(0);
-  }, []);
+  }, [getSpends]);
 
   return (
     <div className="dashboard-card">
       <h4 className="spends-by-date-title">Registro dos gastos</h4>
 
-      {response?.content ? (
+      {page?.content ? (
         <>
           <div className="spends-table-container">
             <table className="spends-table">
@@ -75,15 +90,15 @@ const SpendTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {response.content.map((sale) => (
-                  <tr key={sale.id}>
-                    <td>{sale.id}</td>
-                    <td>{formatDate(sale.date)}</td>
-                    <td>Outros</td>
-                    <td>{sale.categoryName}</td>
-                    <td>{sale.storeName}</td>
-                    <td>{sale.paymentMethod}</td>
-                    <td>{sale.total}</td>
+                {page.content.map((spend) => (
+                  <tr key={spend.id}>
+                    <td>{spend.id}</td>
+                    <td>{formatDate(spend.date)}</td>
+                    <td>{formatGender(spend.gender)}</td>
+                    <td>{spend.categoryName}</td>
+                    <td>{spend.storeName}</td>
+                    <td>{spend.paymentMethod}</td>
+                    <td>{spend.total}</td>
                   </tr>
                 ))}
               </tbody>
@@ -94,7 +109,7 @@ const SpendTable = () => {
             <Pagination
               pageCount={page ? page.totalPages : 0}
               range={3}
-              onChange={getSpends}
+              onChange={(pageNumber) => getSpends(pageNumber)}
             />
           </div>
         </>

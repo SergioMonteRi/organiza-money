@@ -30,3 +30,35 @@ export type SpringPage<T> = {
   numberOfElements?: number;
   empty: boolean;
 };
+
+export type SpendByDate = {
+  date: string;
+  sum: number;
+};
+
+export type ChartSeriesData = {
+  x: string;
+  y: number;
+};
+
+export type GenderData = 'MALE' | 'FEMALE' | 'OTHER';
+
+export type FilterData = {
+  dates?: Date[];
+  gender?: GenderData;
+};
+
+export type SalesByStoreData = {
+  storeName: string;
+  sum: number;
+};
+
+export type PieChartConfig = {
+  labels: string[];
+  series: number[];
+};
+
+export type SalesByPaymentMethod = {
+  description: string;
+  sum: number;
+};

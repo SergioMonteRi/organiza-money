@@ -1,17 +1,18 @@
 import ReactApexChart from 'react-apexcharts';
+
+// HELPERS
 import { buildPieChartConfig } from './helpers';
 
+// STYLES
 import './styles.css';
 
 type Props = {
-  labels: string[];
   name: string;
-  series: number[];
+  labels?: string[];
+  series?: number[];
 };
 
-const PieChart = (props: Props) => {
-  const { labels, name, series } = props;
-
+const PieChart = ({ labels = [], name, series = [] }: Props) => {
   return (
     <div className="pie-chart-container dashboard-card">
       <ReactApexChart
