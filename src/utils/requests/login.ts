@@ -1,7 +1,7 @@
 import qs from 'qs';
 import axios from 'axios';
 
-import { LoginRequest } from 'utils/types/request-types';
+import { LoginRequest, UserRegisterRequest } from 'utils/types/request-types';
 
 import { BASE_URL, CLIENT_ID, CLIENT_SECRET } from './request-config';
 
@@ -22,5 +22,18 @@ export const requestBackendLogin = (loginData: LoginRequest) => {
     url: '/oauth/token',
     data,
     headers,
+  });
+};
+
+export const requestBackendUserRegister = (
+  userRegisterData: UserRegisterRequest
+) => {
+  const data = JSON.stringify(userRegisterData);
+
+  return axios({
+    method: 'POST',
+    baseURL: BASE_URL,
+    url: '/users',
+    data,
   });
 };

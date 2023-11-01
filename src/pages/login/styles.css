@@ -10,20 +10,9 @@
   padding: 0 32px;
 }
 
-.login-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 64px;
-}
-
 .login-form-field-container {
   display: flex;
   flex-direction: column;
-}
-
-.login-form-field-container:first-child {
-  margin-bottom: 16px;
 }
 
 .login-form-field-label {
@@ -33,7 +22,7 @@
 
 .login-form-field-input {
   border: 1px solid var(--grey-color) !important;
-  height: 35px;
+  height: 40px;
   border-radius: 10px;
   padding: 0 12px;
 }
@@ -57,7 +46,7 @@
   border-radius: 10px;
   color: var(--white-color);
   font-weight: bold;
-  height: 35px;
+  height: 40px;
   margin-top: 48px;
 }
 
@@ -68,44 +57,12 @@
   color: var(--green-color-150);
 }
 
-.login-separator-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  column-gap: 12px;
-  align-items: center;
-  align-self: stretch;
-  margin: 24px 0;
-}
-
-.login-separator-container hr {
-  border: 1px solid var(--grey-color);
-  width: 100%;
-}
-
-.login-separator-container span {
-  display: flex;
-  align-items: center;
-  background-color: var(--white-color);
-}
-
-.login-create-account-container {
-  display: flex;
-  justify-content: center;
-}
-
-.login-create-account-container a {
-  color: var(--grey-color);
-  font-weight: bold;
-  margin-left: 6px;
-}
-
 .login-form-google-button {
   display: flex;
   align-items: center;
   justify-content: center;
   column-gap: 12px;
-  height: 35px;
+  height: 40px;
   width: 100%;
   border-radius: 10px;
   font-weight: 700;
@@ -118,10 +75,6 @@
 .login-form-google-icon {
   height: 20px;
   width: 20px;
-}
-
-.login-img-container {
-  display: none;
 }
 
 @media screen and (min-width: 576px) {
@@ -154,35 +107,5 @@
 
   .login-form-google-button {
     height: 50px;
-  }
-
-  .login-img-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #d3fce7;
-    border-radius: 0px 50px 50px 0px;
-    position: relative;
-  }
-
-  .login-img-background {
-    width: calc(100% - 50px);
-    height: 100%;
-    left: 0;
-    border-radius: 0px 50px 50px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-  }
-
-  .login-img-background p {
-    color: var(--main-grey);
-    text-align: center;
-    font-family: Raleway;
-    font-size: 24px;
   }
 }

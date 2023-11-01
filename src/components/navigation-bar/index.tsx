@@ -100,7 +100,10 @@ const NavigationBar = () => {
             <>
               <NavLink to="/login">Entrar</NavLink>
 
-              <NavLink className="nav-login-logout-register" to="/register">
+              <NavLink
+                className="nav-login-logout-register"
+                to="/user-register"
+              >
                 Registrar-se
               </NavLink>
             </>

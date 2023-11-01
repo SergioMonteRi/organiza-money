@@ -6,6 +6,7 @@ import Home from 'pages/home';
 import Login from 'pages/login';
 import Redirect from 'pages/redirect';
 import Dashboard from 'pages/dashboard';
+import UserRegister from 'pages/user-register';
 
 // AUTH
 import { AuthContext, AuthContextData } from 'contex/AuthContex';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/user-register" element={<UserRegister />} />
             <Route path="*" element={<Redirect />} />
           </Routes>
         </AuthContext.Provider>
