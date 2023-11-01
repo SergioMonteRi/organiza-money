@@ -2,10 +2,5 @@
   .home-grid-container {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px);
-  }
-
-  .home-last-section-container {
-    height: calc(50vh - 70px);
   }
 }
