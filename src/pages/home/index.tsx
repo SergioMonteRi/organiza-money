@@ -60,12 +60,14 @@ const Home = () => {
         />
       </div>
 
-      <InformativeSection
-        imgPath={FourthSectionImg}
-        title={fourthInformativeSectionTitle}
-        subtitle={fourthInformativeSectionSubtitle}
-        hasButton
-      />
+      <div className="home-last-section-container">
+        <InformativeSection
+          imgPath={FourthSectionImg}
+          title={fourthInformativeSectionTitle}
+          subtitle={fourthInformativeSectionSubtitle}
+          hasButton
+        />
+      </div>
     </div>
   );
 };
