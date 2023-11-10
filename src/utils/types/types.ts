@@ -41,15 +41,18 @@ export type ChartSeriesData = {
   y: number;
 };
 
-export type GenderData = 'MALE' | 'FEMALE' | 'OTHER';
+export type SpendType = {
+  id: number;
+  name: string;
+};
 
 export type FilterData = {
   dates?: Date[];
-  gender?: GenderData;
+  expenseType?: number;
 };
 
-export type SalesByStoreData = {
-  storeName: string;
+export type SpendByTypeData = {
+  expenseType: string;
   sum: number;
 };
 
@@ -61,4 +64,22 @@ export type PieChartConfig = {
 export type SalesByPaymentMethod = {
   description: string;
   sum: number;
+};
+
+export type SpendSummaryData = {
+  sum?: number;
+  min: number;
+  max: number;
+  avg: number;
+  count: number;
+};
+
+export type SpendData = {
+  id: number;
+  date: string;
+  expenseType: {
+    id: number;
+    name: string;
+  };
+  spend: number;
 };

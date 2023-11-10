@@ -33,8 +33,9 @@ const SpendsByDate = ({ filterData }: Props) => {
   useEffect(() => {
     const params: AxiosRequestConfig = {
       method: 'GET',
-      url: '/sales/by-date',
+      url: '/expense/filter?',
       params: requestParams,
+      withCredentials: true,
     };
 
     requestBackend(params).then((response) => {

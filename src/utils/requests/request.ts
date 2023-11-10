@@ -19,8 +19,8 @@ export const requestBackend = (config: AxiosRequestConfig) => {
 
 export const buildFilterParams = (filterData?: FilterData) => {
   return {
-    minDate: formatDateToServe(filterData?.dates?.[0]),
-    maxDate: formatDateToServe(filterData?.dates?.[1]),
-    gender: filterData?.gender,
+    startDate: formatDateToServe(filterData?.dates?.[0]),
+    endDate: formatDateToServe(filterData?.dates?.[1]),
+    expenseType: filterData?.expenseType,
   };
 };

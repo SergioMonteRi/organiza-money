@@ -45,31 +45,6 @@ const UserRegister = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <div className="login-form-field-container mb-3">
-            <label className="login-form-field-label" htmlFor="email">
-              Email
-            </label>
-            <input
-              {...register('email', {
-                required: 'Campo obrigatório',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Email inválido',
-                },
-              })}
-              type="text"
-              className={`login-form-field-input ${
-                errors.email ? 'is-invalid' : ''
-              }`}
-              placeholder="Email"
-              name="email"
-              autoComplete="false"
-            />
-            <div className="invalid-feedback d-block">
-              {errors.email?.message}
-            </div>
-          </div>
-
-          <div className="login-form-field-container mb-3">
             <label className="login-form-field-label" htmlFor="firstName">
               Primeiro nome
             </label>
@@ -110,6 +85,31 @@ const UserRegister = () => {
             />
             <div className="invalid-feedback d-block">
               {errors.lastName?.message}
+            </div>
+          </div>
+
+          <div className="login-form-field-container mb-3">
+            <label className="login-form-field-label" htmlFor="email">
+              Email
+            </label>
+            <input
+              {...register('email', {
+                required: 'Campo obrigatório',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Email inválido',
+                },
+              })}
+              type="text"
+              className={`login-form-field-input ${
+                errors.email ? 'is-invalid' : ''
+              }`}
+              placeholder="Email"
+              name="email"
+              autoComplete="false"
+            />
+            <div className="invalid-feedback d-block">
+              {errors.email?.message}
             </div>
           </div>
 

@@ -3,7 +3,7 @@ import './styles.css';
 type Props = {
   icon: React.ReactNode;
   label: string;
-  value: string;
+  value: number | string;
 };
 
 const SpendSummaryCard = (props: Props) => {

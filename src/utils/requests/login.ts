@@ -28,6 +28,11 @@ export const requestBackendLogin = (loginData: LoginRequest) => {
 export const requestBackendUserRegister = (
   userRegisterData: UserRegisterRequest
 ) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET),
+  };
+
   const data = JSON.stringify(userRegisterData);
 
   return axios({
@@ -35,5 +40,6 @@ export const requestBackendUserRegister = (
     baseURL: BASE_URL,
     url: '/users',
     data,
+    headers,
   });
 };

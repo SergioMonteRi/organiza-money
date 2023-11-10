@@ -18,6 +18,8 @@ const PieChart = ({ labels = [], name, series = [] }: Props) => {
       <ReactApexChart
         options={buildPieChartConfig(labels, name)}
         type="donut"
+        width={'400'}
+        height={'400'}
         series={series}
       />
     </div>

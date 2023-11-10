@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FlatPicker from 'react-flatpickr';
 import Select, { SingleValue } from 'react-select';
 
@@ -7,7 +7,7 @@ import flatpickrLib from 'flatpickr';
 import { Portuguese } from 'flatpickr/dist/l10n/pt';
 
 // TYPES
-import { FilterData, GenderData } from 'utils/types/types';
+import { FilterData, SpendType } from 'utils/types/types';
 
 // STYLES
 import 'flatpickr/dist/themes/material_green.css';
@@ -19,34 +19,34 @@ type Props = {
   onFilterChange: (filter: FilterData) => void;
 };
 
-type Options = {
-  value: string;
-  label: string;
-};
-
 const Filter = ({ onFilterChange }: Props) => {
   const [dates, setDates] = useState<Date[]>([]);
-  const [gender, setGender] = useState<GenderData>();
+  const [expenseType, setExpenseType] = useState<SpendType>();
 
   const onChangeDate = (dates: Date[]) => {
+    console.log(dates);
     if (dates.length === 2) {
       setDates(dates);
-      onFilterChange({ dates, gender });
+      onFilterChange({ dates, expenseType: expenseType?.id });
     }
   };
 
-  const onChangeGender = (options: SingleValue<Options>) => {
-    if (options?.value) {
-      const selectedGender = options.value as GenderData;
-      setGender(selectedGender);
-      onFilterChange({ dates, gender: selectedGender });
-    }
+  const onChangeSpendType = (options: SingleValue<SpendType>) => {
+    const spendTypeOption: SpendType = options as SpendType;
+    setExpenseType(spendTypeOption);
+    onFilterChange({ dates, expenseType: spendTypeOption?.id });
   };
 
-  const options: Options[] = [
-    { value: 'MALE', label: 'Masculino' },
-    { value: 'FEMALE', label: 'Feminino' },
-    { value: 'OTHER', label: 'Outros' },
+  useEffect(() => {}, []);
+
+  const options: SpendType[] = [
+    { id: 1, name: 'Mercado' },
+    { id: 2, name: 'Escola' },
+    { id: 3, name: 'Faculdade' },
+    { id: 4, name: 'LOL' },
+    { id: 5, name: 'LOL1' },
+    { id: 6, name: 'LOL2' },
+    { id: 7, name: 'LOL3' },
   ];
 
   return (
@@ -66,7 +66,9 @@ const Filter = ({ onFilterChange }: Props) => {
         options={options}
         classNamePrefix="filter-input"
         placeholder="Selecione um tipo de gasto"
-        onChange={(options) => onChangeGender(options)}
+        getOptionLabel={(spendType: SpendType) => spendType.name}
+        getOptionValue={(spendType: SpendType) => String(spendType.id)}
+        onChange={(options) => onChangeSpendType(options)}
       />
     </div>
   );

@@ -9,3 +9,12 @@ export type UserRegisterRequest = {
   email: string;
   password: string;
 };
+
+export type SpendAddRequest = {
+  value: string;
+  expenseType: {
+    id: number;
+    name: string;
+  };
+  date: string;
+};

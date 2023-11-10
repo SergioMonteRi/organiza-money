@@ -4,11 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 
 // UTILS
-import { formatDate, formatGender } from 'utils/requests/formatters';
+import { formatDate } from 'utils/requests/formatters';
 import { buildFilterParams, requestBackend } from 'utils/requests/request';
 
 // TYPES
-import { FilterData, SpringPage } from 'utils/types/types';
+import { FilterData, SpendData, SpringPage } from 'utils/types/types';
 
 // COMPONENTS
 import Pagination from 'components/pagination';
@@ -16,29 +16,12 @@ import Pagination from 'components/pagination';
 // STYLES
 import './styles.css';
 
-export type SaleData = {
-  id: number;
-  date: string;
-  volume: number;
-  total: number;
-  gender: GenderData;
-  categoryName: string;
-  paymentMethod: string;
-  storeName: string;
-};
-
-export type SalesResponse = {
-  content: SaleData[];
-};
-
-export type GenderData = 'MALE' | 'FEMALE' | 'OTHER';
-
 type Props = {
   filterData?: FilterData;
 };
 
 const SpendTable = ({ filterData }: Props) => {
-  const [page, setPage] = useState<SpringPage<SaleData>>();
+  const [page, setPage] = useState<SpringPage<SpendData>>();
 
   const requestParams = useMemo(
     () => buildFilterParams(filterData),
@@ -49,12 +32,13 @@ const SpendTable = ({ filterData }: Props) => {
     (pageNumber: number) => {
       const params: AxiosRequestConfig = {
         method: 'GET',
-        url: '/sales',
+        url: '/expense',
         params: {
           ...requestParams,
           page: pageNumber,
-          size: 12,
+          size: 8,
         },
+        withCredentials: true,
       };
 
       requestBackend(params)
@@ -82,11 +66,8 @@ const SpendTable = ({ filterData }: Props) => {
                 <tr>
                   <th>ID</th>
                   <th>Data</th>
-                  <th>Gênero</th>
                   <th>Categoria</th>
-                  <th>Loja</th>
-                  <th>Forma de pagamento</th>
-                  <th>Total</th>
+                  <th>Valor R$</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,11 +75,8 @@ const SpendTable = ({ filterData }: Props) => {
                   <tr key={spend.id}>
                     <td>{spend.id}</td>
                     <td>{formatDate(spend.date)}</td>
-                    <td>{formatGender(spend.gender)}</td>
-                    <td>{spend.categoryName}</td>
-                    <td>{spend.storeName}</td>
-                    <td>{spend.paymentMethod}</td>
-                    <td>{spend.total}</td>
+                    <td>{spend.expenseType.name}</td>
+                    <td>{spend.spend}</td>
                   </tr>
                 ))}
               </tbody>

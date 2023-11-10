@@ -1,7 +1,8 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import SpendAddModal from './components/spend-add-modal';
+import SpendAddModal from '../spend-add-modal';
+import SpendTypeAddModal from './components/spend-type-add-modal';
 import SpendManagementModal from './components/spend-management-modal';
 
 import './styles.css';
@@ -9,9 +10,9 @@ import './styles.css';
 const SpendTypeAdd = () => {
   const MySwal = withReactContent(Swal);
 
-  const onClickAddSpend = () => {
+  const onClickAddSpendType = () => {
     MySwal.fire({
-      html: <SpendAddModal />,
+      html: <SpendTypeAddModal />,
       showConfirmButton: false,
     });
   };
@@ -23,16 +24,26 @@ const SpendTypeAdd = () => {
     });
   };
 
+  const onClickAddSpend = () => {
+    MySwal.fire({
+      html: <SpendAddModal />,
+      showConfirmButton: false,
+    });
+  };
+
   return (
     <div className="spend-type-add-container dashboard-card">
-      <button className="spend-type-add-button" onClick={onClickAddSpend}>
-        Adicionar tipos de gastos
+      <button className="spend-type-add-button" onClick={onClickAddSpendType}>
+        Adicionar tipo de gasto
       </button>
       <button
         className="spend-type-add-button"
         onClick={onClickManagementSpend}
       >
-        Gerenciar tipos de gastos
+        Gerenciar tipo de gasto
+      </button>
+      <button className="spend-add-button" onClick={onClickAddSpend}>
+        Adicionar gasto
       </button>
     </div>
   );

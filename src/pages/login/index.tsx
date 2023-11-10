@@ -32,8 +32,6 @@ const Login = () => {
   } = useForm<LoginRequest>();
 
   const onSubmit = (formData: LoginRequest) => {
-    navigate('/dashboard');
-
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
