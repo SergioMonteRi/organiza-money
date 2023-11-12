@@ -31,8 +31,6 @@ const Dashboard = () => {
   );
 
   useEffect(() => {
-    console.log(requestParams);
-
     const params: AxiosRequestConfig = {
       method: 'GET',
       url: '/expense/expense-type',
@@ -60,11 +58,7 @@ const Dashboard = () => {
         <SpendsByDate filterData={filterData} />
         <div className="spend-overview-container">
           <SpendSummary filterData={filterData} />
-          <PieChart
-            name="Gastos"
-            labels={spendByType?.labels}
-            series={spendByType?.series}
-          />
+          <PieChart labels={spendByType?.labels} series={spendByType?.series} />
         </div>
         <SpendTable filterData={filterData} />
       </div>

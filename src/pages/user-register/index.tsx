@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 
+import { AxiosRequestConfig } from 'axios';
+
+import FormFooter from 'components/form-footer';
+
+import { requestBackend } from 'utils/requests/request';
 import { UserRegisterRequest } from 'utils/types/request-types';
-import { requestBackendUserRegister } from 'utils/requests/login';
 
 // ASSETS
 import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
-import FormFooter from 'components/form-footer';
+import Swal from 'sweetalert2';
 
 const UserRegister = () => {
   const navigate = useNavigate();
@@ -21,8 +25,21 @@ const UserRegister = () => {
   } = useForm<UserRegisterRequest>();
 
   const onSubmit = (formData: UserRegisterRequest) => {
-    requestBackendUserRegister(formData)
+    const params: AxiosRequestConfig = {
+      method: 'POST',
+      url: '/users',
+      data: formData,
+    };
+
+    requestBackend(params)
       .then(() => {
+        Swal.fire({
+          title: 'Sucesso!',
+          text: 'É hora de saber para onde vai o seu dinheiro',
+          showConfirmButton: true,
+          confirmButtonColor: '#29e589',
+          icon: 'success',
+        });
         navigate('/login');
       })
       .catch(() => {

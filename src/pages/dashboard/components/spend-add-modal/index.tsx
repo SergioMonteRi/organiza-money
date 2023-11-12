@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Swal from 'sweetalert2';
 import Select from 'react-select';
@@ -7,42 +7,28 @@ import { AxiosRequestConfig } from 'axios';
 import { useForm, Controller } from 'react-hook-form';
 import CurrencyInput from 'react-currency-input-field';
 
-import { DateFormatter } from 'utils/formatters';
 import { requestBackend } from 'utils/requests/request';
 import { SpendAddRequest } from 'utils/types/request-types';
 
 import { bouncy } from 'ldrs';
 
 import './styles.css';
+import { SwalRequestError } from 'utils/constants';
+import { SpendType } from 'utils/types/types';
+import { DateFormatter } from 'utils/requests/formatters';
 
 bouncy.register();
 
-export type Category = {
-  id: number;
-  name: string;
+const requestParams: AxiosRequestConfig = {
+  method: 'GET',
+  url: '/expenseType',
+  withCredentials: true,
 };
-
-const MockSelect: Category[] = [
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-  { id: 1, name: 'Mercado' },
-  { id: 2, name: 'Escola' },
-];
 
 const SpendAddModal = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [loadingMsg, setLoadingMsg] = useState<string>();
+  const [expenseTypeOptions, setExpenseTypeOptions] = useState<SpendType[]>([]);
 
   const {
     handleSubmit,
@@ -92,6 +78,16 @@ const SpendAddModal = () => {
       });
   };
 
+  useEffect(() => {
+    requestBackend(requestParams)
+      .then((response) => {
+        setExpenseTypeOptions(response.data);
+      })
+      .catch(() => {
+        SwalRequestError();
+      });
+  }, []);
+
   return (
     <div className="spend-modal-container spend-add">
       {isLoading ? (
@@ -117,11 +113,13 @@ const SpendAddModal = () => {
                 render={({ field }) => (
                   <Select
                     {...field}
-                    options={MockSelect}
+                    options={expenseTypeOptions}
                     classNamePrefix="product-crud-select"
                     placeholder="Tipo de gasto"
-                    getOptionLabel={(category: Category) => category.name}
-                    getOptionValue={(category: Category) => String(category.id)}
+                    getOptionLabel={(category: SpendType) => category.name}
+                    getOptionValue={(category: SpendType) =>
+                      String(category.id)
+                    }
                     inputId="categories"
                   />
                 )}

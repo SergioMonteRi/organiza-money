@@ -30,6 +30,11 @@
   height: 45px;
 }
 
+.filter-input__menu {
+  overflow: auto;
+  max-height: 150px;
+}
+
 .css-b62m3t-container {
   width: 100%;
 }

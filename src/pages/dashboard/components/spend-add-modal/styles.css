@@ -1,6 +1,6 @@
 .spend-add {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .product-crud-select__control {
@@ -8,8 +8,8 @@
 }
 
 .product-crud-select__menu {
-  overflow: hidden;
-  height: 150px;
+  overflow-y: auto !important;
+  max-height: 150px;
 }
 
 .product-crud-select__placeholder {

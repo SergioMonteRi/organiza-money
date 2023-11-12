@@ -3,6 +3,12 @@ import { ApexOptions } from 'apexcharts';
 export const buildPieChartConfig = (labels: string[] = [], name: string) => {
   return {
     labels,
+    legend: {
+      position: 'bottom',
+      fontSize: '14px',
+      fontWeight: 'normal',
+      fontFamily: 'Montserrat, sans-serif',
+    },
     noData: {
       text: 'Sem resultados',
       align: 'center',
@@ -11,35 +17,23 @@ export const buildPieChartConfig = (labels: string[] = [], name: string) => {
       offsetY: 0,
       style: {
         color: '#FFF',
-        fontSize: '18px',
+        fontSize: '16px',
         fontFamily: 'Roboto, sans-serif',
       },
     },
-    colors: ['#3e82f7', '#04d182', '#ffc107', '#ff6b72'],
-    legend: {
-      show: true,
-      floating: false,
-      position: 'bottom',
-      offsetY: 30,
-      labels: {
-        colors: ['#b4bed2'],
-      },
-      fontFamily: 'Roboto, sans-serif',
-      fontSize: '18px',
-    },
-    dataLabels: {
-      enabled: false,
+    chart: {
+      width: '100%',
+      height: '100%',
+      offsetY: 0,
     },
     plotOptions: {
       pie: {
-        size: 400,
         donut: {
-          size: '85%',
           labels: {
             show: true,
             name: {
               show: true,
-              offsetY: 10,
+              fontSize: '16px',
               formatter: function () {
                 return name;
               },
@@ -47,31 +41,16 @@ export const buildPieChartConfig = (labels: string[] = [], name: string) => {
             total: {
               show: true,
               showAlways: true,
-              fontSize: '24px',
+              fontSize: '22px',
               color: '#ABB1C0',
               fontFamily: 'Roboto, sans-serif',
               formatter: function () {
-                return '';
+                return '%';
               },
             },
           },
         },
       },
     },
-    responsive: [
-      {
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 300,
-            height: 300,
-          },
-          legend: {
-            position: 'bottom',
-            offsetY: 0,
-          },
-        },
-      },
-    ],
   } as ApexOptions;
 };

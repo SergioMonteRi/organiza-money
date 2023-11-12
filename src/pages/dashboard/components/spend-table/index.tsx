@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 
 // UTILS
-import { formatDate } from 'utils/requests/formatters';
+import { formatDateToTable } from 'utils/requests/formatters';
 import { buildFilterParams, requestBackend } from 'utils/requests/request';
 
 // TYPES
@@ -74,7 +74,7 @@ const SpendTable = ({ filterData }: Props) => {
                 {page.content.map((spend) => (
                   <tr key={spend.id}>
                     <td>{spend.id}</td>
-                    <td>{formatDate(spend.date)}</td>
+                    <td>{formatDateToTable(spend.date)}</td>
                     <td>{spend.expenseType.name}</td>
                     <td>{spend.spend}</td>
                   </tr>

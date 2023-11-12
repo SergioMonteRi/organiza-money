@@ -1,31 +1,47 @@
+import { useState } from 'react';
+
+import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { BsArrowRight } from 'react-icons/bs';
 
-import Swal from 'sweetalert2';
+import { SpendType } from 'utils/types/types';
 
 import './styles.css';
-import { useState } from 'react';
+import { SwalRequestError } from 'utils/constants';
+import { AxiosRequestConfig } from 'axios';
+import { requestBackend } from 'utils/requests/request';
 
-type Props = {
-  name: string;
-  id: number;
-};
-
-type EditSpend = {
-  name: string;
-};
-
-const EditSpendModal = (props: Props) => {
+const EditSpendModal = (props: SpendType) => {
   const [newSpendName, setNewSpendName] = useState<string>();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<EditSpend>();
+  } = useForm<SpendType>();
 
-  const onSubmit = (formData: EditSpend) => {
-    console.log(formData);
-    Swal.close();
+  const onSubmit = (formData: SpendType) => {
+    const requestData = { name: formData.name };
+
+    const requestParams: AxiosRequestConfig = {
+      method: 'PUT',
+      url: `/expenseType/${props.id}`,
+      data: requestData,
+      withCredentials: true,
+    };
+
+    requestBackend(requestParams)
+      .then(() => {
+        Swal.fire({
+          title: 'Alterado com sucesso',
+          timer: 2200,
+          icon: 'success',
+          showConfirmButton: false,
+        });
+      })
+      .catch(() => {
+        SwalRequestError();
+      });
   };
 
   return (

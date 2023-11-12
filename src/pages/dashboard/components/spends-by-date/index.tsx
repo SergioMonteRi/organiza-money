@@ -55,8 +55,8 @@ const SpendsByDate = ({ filterData }: Props) => {
           <h4 className="spends-by-date-title">Gastos no período</h4>
           {filterData?.dates && (
             <span className="spends-by-date-period">
-              {formatDate(filterData?.dates?.[0])} até
-              {formatDate(filterData?.dates?.[1])}
+              {`${formatDate(filterData?.dates?.[0])} até 
+              ${formatDate(filterData?.dates?.[1])}`}
             </span>
           )}
         </div>
