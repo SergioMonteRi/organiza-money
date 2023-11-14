@@ -50,22 +50,22 @@ const SpendSummary = ({ filterData }: Props) => {
       <SpendSummaryCard
         icon={<AverageIcon />}
         label="Média"
-        value={summary?.avg?.toFixed(2)}
+        value={summary.avg ? summary?.avg?.toFixed(2) : 0}
       />
       <SpendSummaryCard
         icon={<MaxIcon />}
         label="Máximo"
-        value={summary?.max}
+        value={summary.max ? summary?.max : 0}
       />
       <SpendSummaryCard
         icon={<MinIcon />}
         label="Mínimo"
-        value={summary?.min}
+        value={summary.min ? summary?.min : 0}
       />
       <SpendSummaryCard
         icon={<MinIcon />}
         label="Quantidade de Cadastros"
-        value={summary?.count}
+        value={summary.count ? summary?.count : 0}
       />
     </div>
   );

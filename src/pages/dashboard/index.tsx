@@ -20,6 +20,7 @@ import SpendTypeAdd from './components/spend-type-add';
 
 // STYLES
 import './styles.css';
+import PieChartNoData from './components/pie-chat-no-data';
 
 const Dashboard = () => {
   const [filterData, setFilterData] = useState<FilterData>();
@@ -58,7 +59,14 @@ const Dashboard = () => {
         <SpendsByDate filterData={filterData} />
         <div className="spend-overview-container">
           <SpendSummary filterData={filterData} />
-          <PieChart labels={spendByType?.labels} series={spendByType?.series} />
+          {spendByType?.series.length ? (
+            <PieChart
+              labels={spendByType?.labels}
+              series={spendByType?.series}
+            />
+          ) : (
+            <PieChartNoData />
+          )}
         </div>
         <SpendTable filterData={filterData} />
       </div>

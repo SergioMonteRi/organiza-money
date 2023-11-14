@@ -58,7 +58,7 @@ const SpendTable = ({ filterData }: Props) => {
     <div className="dashboard-card">
       <h4 className="spends-by-date-title">Registro dos gastos</h4>
 
-      {page?.content ? (
+      {page?.content.length ? (
         <>
           <div className="spends-table-container">
             <table className="spends-table">
@@ -92,7 +92,7 @@ const SpendTable = ({ filterData }: Props) => {
           </div>
         </>
       ) : (
-        <h4>Ainda não há registro</h4>
+        <h4 className="spend-table-no-data">Ainda não há registro</h4>
       )}
     </div>
   );

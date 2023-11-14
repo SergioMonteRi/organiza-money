@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import { bouncy } from 'ldrs';
+
 // UTILS
 import { getTokenData } from 'utils/token';
 import { saveAuthData } from 'utils/storage';
@@ -18,12 +20,15 @@ import FormFooter from 'components/form-footer';
 
 import './styles.css';
 
+bouncy.register();
+
 const Login = () => {
   const navigate = useNavigate();
 
   const { setAuthContextData } = useContext(AuthContext);
 
   const [hasLoginError, setHasLoginError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -32,6 +37,8 @@ const Login = () => {
   } = useForm<LoginRequest>();
 
   const onSubmit = (formData: LoginRequest) => {
+    setIsLoading(true);
+
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
@@ -44,7 +51,9 @@ const Login = () => {
       .catch(() => {
         setHasLoginError(true);
       })
-      .finally(() => {});
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -102,7 +111,13 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="login-form-button">Entrar</button>
+          {isLoading ? (
+            <div className="login-form-button">
+              <l-bouncy size="45" speed="1.75" color="white" />
+            </div>
+          ) : (
+            <button className="login-form-button">Entrar</button>
+          )}
         </form>
 
         <FormFooter

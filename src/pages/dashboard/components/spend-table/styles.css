@@ -35,3 +35,7 @@
 .spends-table tbody tr:nth-child(odd) {
   background-color: rgba(23, 219, 144, 0.1);
 }
+
+.spend-table-no-data {
+  font-size: 18px;
+}

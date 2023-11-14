@@ -115,11 +115,12 @@ const SpendAddModal = () => {
                     {...field}
                     options={expenseTypeOptions}
                     classNamePrefix="product-crud-select"
-                    placeholder="Tipo de gasto"
+                    placeholder="Categoria de gasto"
                     getOptionLabel={(category: SpendType) => category.name}
                     getOptionValue={(category: SpendType) =>
                       String(category.id)
                     }
+                    noOptionsMessage={() => 'Categoria de gasto não cadastrada'}
                     inputId="categories"
                   />
                 )}

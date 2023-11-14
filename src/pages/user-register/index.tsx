@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 
+import { bouncy } from 'ldrs';
+import Swal from 'sweetalert2';
 import { AxiosRequestConfig } from 'axios';
 
 import FormFooter from 'components/form-footer';
@@ -11,12 +13,14 @@ import { UserRegisterRequest } from 'utils/types/request-types';
 
 // ASSETS
 import { ReactComponent as AppIcon } from 'assets/icons/app-icon.svg';
-import Swal from 'sweetalert2';
+
+bouncy.register();
 
 const UserRegister = () => {
   const navigate = useNavigate();
 
   const [hasLoginError, setHasLoginError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -25,6 +29,8 @@ const UserRegister = () => {
   } = useForm<UserRegisterRequest>();
 
   const onSubmit = (formData: UserRegisterRequest) => {
+    setIsLoading(true);
+
     const params: AxiosRequestConfig = {
       method: 'POST',
       url: '/users',
@@ -45,7 +51,9 @@ const UserRegister = () => {
       .catch(() => {
         setHasLoginError(true);
       })
-      .finally(() => {});
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -152,7 +160,13 @@ const UserRegister = () => {
             </div>
           </div>
 
-          <button className="login-form-button">Registrar-se</button>
+          {isLoading ? (
+            <div className="login-form-button">
+              <l-bouncy size="45" speed="1.75" color="white" />
+            </div>
+          ) : (
+            <button className="login-form-button">Registrar-se</button>
+          )}
         </form>
 
         <FormFooter

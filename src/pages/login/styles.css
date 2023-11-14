@@ -40,6 +40,9 @@
 }
 
 .login-form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background-color: var(--green-color-150);
   border: 2px solid var(--green-color-150);

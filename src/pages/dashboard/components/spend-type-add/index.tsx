@@ -34,13 +34,13 @@ const SpendTypeAdd = () => {
   return (
     <div className="spend-type-add-container dashboard-card">
       <button className="spend-type-add-button" onClick={onClickAddSpendType}>
-        Adicionar tipo de gasto
+        Adicionar categoria de gasto
       </button>
       <button
         className="spend-type-add-button"
         onClick={onClickManagementSpend}
       >
-        Gerenciar tipo de gasto
+        Gerenciar categoria de gasto
       </button>
       <button className="spend-add-button" onClick={onClickAddSpend}>
         Adicionar gasto

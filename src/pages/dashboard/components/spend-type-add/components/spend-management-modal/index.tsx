@@ -88,7 +88,7 @@ const SpendManagementModal = () => {
 
       {expenseType?.length <= 0 ? (
         <>
-          <h2>Você ainda não cadastrou nenhum tipo de gasto</h2>
+          <h2>Nenhuma categoria de gasto cadastrada</h2>
           <div className="spend-modal-form-button-container">
             <button
               className="spend-modal-form-button"
